@@ -1,0 +1,17 @@
+.img{
+    width: 40rem;
+    display: block;
+    margin: 0 auto;
+    overflow-y: hidden;
+}
+.censored{
+    z-index: 1;
+    background-color: black;
+    position: absolute;
+    bottom: 1rem;
+    height: 3rem;
+    width: 40rem;
+    text-align: center;
+    font-family: Bahnschrift, serif;
+    color: white;
+}

@@ -1,0 +1,30 @@
+<component name="ProjectCodeStyleConfiguration">
+  <code_scheme name="Project" version="173">
+    <option name="FORMATTER_TAGS_ENABLED" value="true" />
+    <HTMLCodeStyleSettings>
+      <option name="HTML_SPACE_AROUND_EQUALITY_IN_ATTRIBUTE" value="true" />
+    </HTMLCodeStyleSettings>
+    <codeStyleSettings language="HTML">
+      <option name="RIGHT_MARGIN" value="120" />
+      <option name="WRAP_ON_TYPING" value="0" />
+      <indentOptions>
+        <option name="KEEP_INDENTS_ON_EMPTY_LINES" value="true" />
+      </indentOptions>
+    </codeStyleSettings>
+    <codeStyleSettings language="JSON">
+      <indentOptions>
+        <option name="INDENT_SIZE" value="4" />
+      </indentOptions>
+    </codeStyleSettings>
+    <codeStyleSettings language="JavaScript">
+      <option name="INDENT_CASE_FROM_SWITCH" value="false" />
+      <option name="ALIGN_MULTILINE_PARAMETERS" value="false" />
+      <option name="ALIGN_MULTILINE_FOR" value="false" />
+    </codeStyleSettings>
+    <codeStyleSettings language="TypeScript">
+      <indentOptions>
+        <option name="KEEP_INDENTS_ON_EMPTY_LINES" value="true" />
+      </indentOptions>
+    </codeStyleSettings>
+  </code_scheme>
+</component>
