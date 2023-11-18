@@ -84,6 +84,7 @@ h2{
     display: inline-block;
     margin: 1rem auto;
 }
+
 button {
     font-size: 20px;
     padding: 5px 10px;
@@ -96,18 +97,30 @@ button {
     box-shadow: black 4px 4px 0px;
 }
 
-button:disabled {
+.big-button {
+    padding: 10px 20px;
+    margin: 20px 20px;
+    background: none;
+    border-radius: 10px;
+    width: 20%;
+    border: 3px solid black;
+    font-family: Bahnschrift, serif;
+    display: inline-block;
+    box-shadow: black 4px 4px 0px;
+}
+
+button:disabled, .big-button:disabled {
     color: black;
     border-color: black;
 }
 
-button:hover {
+button:hover, .big-button:hover {
     transform: translate(2px, 2px);
     transition: 0.1s ease-in-out;
     box-shadow: black 2px 2px 0px;
 }
 
-button:active {
+button:active, .big-button:active {
     transform: translate(4px, 4px);
     transition: 0.1s ease-in-out;
     box-shadow: black 0px 0px 0px;
