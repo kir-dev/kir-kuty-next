@@ -48,7 +48,11 @@ export default function HttpGame() {
     }
 
     function vote(index: number) {
-        setRevealed(true)
+        if (revealed) {
+            next()
+        } else {
+            setRevealed(true)
+        }
     }
 
     function next() {
@@ -63,10 +67,12 @@ export default function HttpGame() {
             <div className='container'>
                 <div className='main-content'>
                     <div className='sidebar'>
-                        <p id='history'>alma álma áhitat</p>
+                        <p id='history'>Alma alva ring az ágon, alma álma áhitat, se érzés, se gondolat, tiszta fény az alma-álom.</p>
                     </div>
                     <ImageContainer errorCode={answers.correctHttpCode} />
-                    <div className='sidebar'></div>
+                    <div className='sidebar'>
+                        <p id='history'>Alma alva ring az ágon, alma álma áhitat, se érzés, se gondolat, tiszta fény az alma-álom.</p>
+                    </div>
                 </div>
 
                 <ButtonRow answers={answers} onClick={vote} revealed={revealed} onNext={next} />
