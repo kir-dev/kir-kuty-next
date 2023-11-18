@@ -1,0 +1,37 @@
+.editor {
+    background-color: white;
+    width: 50rem;
+    height: 30rem;
+    border: 3px black solid;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 18px;
+    outline: none;
+    min-width: 20rem;
+    max-width: 50rem;
+    min-height: 10rem;
+    max-height: 40rem;
+}
+
+.h2 {
+    font-size: 40px;
+}
+
+.canvas {
+    background-color: white;
+    text-align: left;
+    align-items: start;
+    border-radius: 10px;
+    padding: 10px;
+    border: 3px black solid;
+}
+
+.canvas > h1, .canvas > h2, .canvas > h3, .canvas > h4 {
+    text-align: left;
+    margin: 0px;
+    display: block;
+}
+
+.canvas > button {
+    margin: 0px;
+}

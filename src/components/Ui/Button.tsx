@@ -1,6 +1,6 @@
 type buttonProps = {
     text: String
-    onClick: () => void
+    onClick: () => void | null
     color: string | null
 }
 export default function Button(props: buttonProps) {

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang = 'en'>
+<head>
+    <meta charset = 'UTF-8'>
+    <meta content = 'width=device-width, initial-scale=1.0' name = 'viewport'>
+    <title>HTML Renderer</title>
+    <style>
+        #htmlCanvas {
+            border: 1px solid #ccc;
+            width: 100%;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+<label for = 'htmlInput'>Enter HTML Code:</label>
+<textarea cols = '50' id = 'htmlInput' rows = '10'></textarea>
+<button onclick = 'renderHTML()'>Render HTML</button>
+<div id = 'htmlCanvas'></div>
+
+<script>
+    function renderHTML() {
+        // Get the HTML code from the textarea
+        var htmlCode = document.getElementById('htmlInput').value
+
+        // Get the canvas element
+        var htmlCanvas = document.getElementById('htmlCanvas')
+
+        // Set the innerHTML of the canvas to the entered HTML code
+        htmlCanvas.innerHTML = htmlCode
+    }
+</script>
+</body>
+</html>

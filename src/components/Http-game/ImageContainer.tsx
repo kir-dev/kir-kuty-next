@@ -10,7 +10,7 @@ export function ImageContainer(props: imageProps) {
         <div className='content'>
             <div className='relative'>
                 <img className={styles.img} src={'https://http.dog/' + props.errorCode + '.jpg'} />
-                <div className={'censored'}>
+                <div className={styles.censored}>
                     <h2> C E N S O R E D </h2>
                 </div>
             </div>

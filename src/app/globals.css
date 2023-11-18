@@ -2,7 +2,7 @@
     --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
     'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
     --kir-dev-orange: rgb(241, 90, 41);
-    --background: rgb(255, 214, 214);
+    --background: rgb(253, 222, 222);
     --green: rgb(98, 246, 98);
     --red: rgb(255, 71, 71);
 }
@@ -16,9 +16,8 @@
 
 * {
     box-sizing: border-box;
-    padding: 0;
-    margin: 0;
     text-decoration: none;
+    outline: none;
     color: black;
 }
 
@@ -33,10 +32,6 @@ body{
     padding: 0;
     margin: 0;
     background-color: var(--background);
-}
-.sidebar{
-    width: 2%;
-    overflow-x: hidden;
 }
 img{
     width: 40rem;
@@ -71,6 +66,10 @@ h2{
 }
 .sidebar {
     flex: 1;
+    width: 25%;
+    overflow-x: hidden;
+    margin: 0 1rem;
+    margin: 0 1rem;
 }
 .content {
     display: flex;
@@ -85,10 +84,10 @@ h2{
     margin: 1rem auto;
 }
 
-button {
+button, .big-button {
     font-size: 20px;
     padding: 5px 10px;
-    margin: 0 10px;
+    margin: 0 8px;
     background: none;
     border-radius: 10px;
     border: 3px solid black;
@@ -100,13 +99,7 @@ button {
 .big-button {
     padding: 10px 20px;
     margin: 20px 20px;
-    background: none;
-    border-radius: 10px;
     width: 20%;
-    border: 3px solid black;
-    font-family: Bahnschrift, serif;
-    display: inline-block;
-    box-shadow: black 4px 4px 0px;
 }
 
 button:disabled, .big-button:disabled {
@@ -126,6 +119,10 @@ button:active, .big-button:active {
     box-shadow: black 0px 0px 0px;
 }
 
+.button-small {
+    margin: 0;
+}
+
 .next {
     position: absolute;
     right: 0rem;
@@ -139,6 +136,17 @@ button:active, .big-button:active {
 
 .full-width {
     width: 100%;
+    position: relative;
+    vertical-align: center;
+    margin: 20px 0px;
+    padding: 10px;
+}
+
+.full-width h2 {
+    height: 100%;
+    display: inline-block;
+    margin-top: 8px;
+    margin-bottom: 0;
 }
 
 .right {
@@ -184,26 +192,28 @@ body{
     padding: 0;
     margin: 0;
 }
-.sidebar{
-    width: 25%;
-    overflow-x: hidden;
-}
 h1{
     font-family: Bahnschrift, serif;
     text-align: left;
     margin-left: 20px;
 }
-h2{
-    width: 100%;
+h2 {
     text-align: center;
+    display: inline;
     font-family: Bahnschrift, serif;
 }
 .orange-text{
     color: rgb(241, 90, 41);
 }
-.relative{
+
+.relative {
     position: relative;
 }
+
+.headline {
+    margin: 20px;
+}
+
 .container {
     display: flex;
     flex-direction: column;
@@ -215,31 +225,14 @@ h2{
     flex: 1;
     width: 100%;
 }
-.sidebar {
-    flex: 1;
-}
 .content {
     display: flex;
     flex-direction: column;
     align-items: center;
     flex: 3;
 }
-#next{
+#next {
+    margin: 0;
     position: absolute;
     right: 2rem;
 }
-.censored{
-    z-index: 1;
-    background-color: black;
-    position: absolute;
-    bottom: 0.3rem;
-    height: 3rem;
-    width: 40rem;
-    text-align: center;
-    font-family: Bahnschrift, serif;
-    color: white;
-}
-.censored > h2{
-    color: white;
-}
-
