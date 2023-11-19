@@ -64,6 +64,9 @@ export default function HttpGame() {
     return (
         <div className='App'>
             <Title />
+            <div className='instruction'>
+                <h2>Melyik HTTP állapotkódra utalhat a kép?</h2>
+            </div>
             <div className='container'>
                 <div className='main-content'>
                     <div className='sidebar'>

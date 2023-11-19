@@ -29,6 +29,9 @@ export default function HtmlGame() {
     return (
         <div className='App'>
             <Title />
+            <div className='instruction'>
+                <h2>Próbáld meg rekreálni a HTML kódját a minta szövegnek!</h2>
+            </div>
             <div className='container'>
                 <div className='main-content'>
                     <div className='sidebar'>
