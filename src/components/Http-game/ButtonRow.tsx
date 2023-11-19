@@ -8,11 +8,17 @@ type buttonRowProps = {
     onNext: () => void
     revealed: boolean
     onClick: (id: number) => void
+    onAbort?: () => void
 }
 
 export default function ButtonRow(props: buttonRowProps) {
     return (
         <div className={'full-width'}>
+            {props.onAbort && (
+                <div className={'left back'}>
+                    <Button key='next' text={'Másik állat'} onClick={props.onAbort} color='transparent'></Button>
+                </div>
+            )}
             <div className='center'>
                 {props.answers.strings.map((answer, index) => (
                     <Button
