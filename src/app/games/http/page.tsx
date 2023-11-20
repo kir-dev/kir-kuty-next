@@ -97,6 +97,9 @@ export default function HttpGame() {
             <div className='container'>
                 {animalIdx == -1 ? (
                     <>
+                        <div>
+                            <h1>Choose the type of animal (or not) you want to play the game with!</h1>
+                        </div>
                         {animals.map((animal, idx) => (
                             <button key={idx} onClick={() => setAnimalIdx(idx)} className={'big-button'}>
                                 <h2>{animal.name}</h2>
