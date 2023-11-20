@@ -94,6 +94,7 @@ button, .big-button {
     font-family: Bahnschrift, serif;
     display: inline-block;
     box-shadow: black 4px 4px 0px;
+    transition: 0.1s ease-in-out;
 }
 
 .big-button {
