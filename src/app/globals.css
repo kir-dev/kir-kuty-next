@@ -210,6 +210,10 @@ body {
 .sidebar {
     width: 25%;
     overflow-x: hidden;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 h1 {
     font-family: Bahnschrift, serif;
