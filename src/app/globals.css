@@ -246,6 +246,10 @@ h2 {
     align-items: center;
     flex: 3;
 }
+.instruction {
+    padding: 10px;
+    font-style: italic;
+}
 #next {
     position: absolute;
     right: 2rem;
