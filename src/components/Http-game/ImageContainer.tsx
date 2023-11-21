@@ -5,14 +5,14 @@ import Image from 'next/image'
 type imageProps = {
     errorCode: number
     animalName: string
+    src: string
 }
 
 export function ImageContainer(props: imageProps) {
     return (
         <div className='content'>
             <div className='relative'>
-                <div className={styles.upperCensored}></div>
-                <img className={styles.img} src={`https://http.${props.animalName}/${props.errorCode}.jpg`} alt={props.animalName} />
+                <img className={styles.img} src={`${props.src}/${props.errorCode}.jpg`} alt={props.animalName} />
                 <div className={styles.censored}>
                     <h2>
                         {props.errorCode} <br /> CENSORED

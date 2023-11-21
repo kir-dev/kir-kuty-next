@@ -1,5 +1,5 @@
 .img {
-    width: 50rem;
+    width: 80vh;
     display: block;
     margin: 0 auto;
     overflow-y: hidden;
@@ -10,7 +10,7 @@
     position: absolute;
     bottom: 0.7rem;
     height: 9rem;
-    width: 50rem;
+    width: 40rem;
     text-align: center;
     font-family: Bahnschrift, serif;
     color: white;

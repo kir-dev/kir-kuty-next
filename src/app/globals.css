@@ -30,10 +30,6 @@ body {
     margin: 0;
     background-color: var(--background);
 }
-.sidebar {
-    width: 2%;
-    overflow-x: hidden;
-}
 img {
     width: 40rem;
     display: block;
@@ -209,11 +205,6 @@ body {
 }
 .sidebar {
     width: 25%;
-    overflow-x: hidden;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
 }
 h1 {
     font-family: Bahnschrift, serif;
