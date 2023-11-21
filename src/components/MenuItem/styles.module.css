@@ -1,16 +1,16 @@
-.menu{
+.menu {
     width: 15rem;
     display: inline-block;
-    border:solid 5px;
+    border: solid 5px;
     border-color: var(--kir-dev-orange);
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: flex-start;
     padding: 1rem;
     margin: 2rem;
     border-radius: 20px;
 }
-.title{
+.title {
     color: black;
     font-size: xx-large;
     font-weight: bold;

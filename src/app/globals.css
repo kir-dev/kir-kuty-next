@@ -1,19 +1,16 @@
 :root {
-    --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
-    'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
+    --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono', 'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
     --kir-dev-orange: rgb(241, 90, 41);
     --background: rgb(253, 222, 222);
     --green: rgb(98, 246, 98);
     --red: rgb(255, 71, 71);
 }
 
-
 @media (prefers-color-scheme: dark) {
     html {
         color-scheme: dark;
     }
 }
-
 * {
     box-sizing: border-box;
     text-decoration: none;
@@ -21,11 +18,11 @@
     color: black;
 }
 
-html{
+html {
     padding: 0;
     margin: 0;
 }
-body{
+body {
     width: 100%;
     height: 100%;
     overflow: hidden;
@@ -33,24 +30,24 @@ body{
     margin: 0;
     background-color: var(--background);
 }
-img{
+img {
     width: 40rem;
     display: block;
     margin: 0 auto;
     overflow-y: hidden;
 }
-h1{
+h1 {
     font-family: Bahnschrift, serif;
     text-align: left;
     margin-left: 20px;
 }
-h2{
+h2 {
     width: 100%;
     text-align: center;
     font-family: Bahnschrift, serif;
 }
 
-.relative{
+.relative {
     position: relative;
 }
 .container {
@@ -84,7 +81,8 @@ h2{
     margin: 1rem auto;
 }
 
-button, .big-button {
+button,
+.big-button {
     font-size: 20px;
     padding: 5px 10px;
     margin: 0 8px;
@@ -103,18 +101,21 @@ button, .big-button {
     width: 20%;
 }
 
-button:disabled, .big-button:disabled {
+button:disabled,
+.big-button:disabled {
     color: black;
     border-color: black;
 }
 
-button:hover, .big-button:hover {
+button:hover,
+.big-button:hover {
     transform: translate(2px, 2px);
     transition: 0.1s ease-in-out;
     box-shadow: black 2px 2px 0px;
 }
 
-button:active, .big-button:active {
+button:active,
+.big-button:active {
     transform: translate(4px, 4px);
     transition: 0.1s ease-in-out;
     box-shadow: black 0px 0px 0px;
@@ -127,6 +128,12 @@ button:active, .big-button:active {
 .next {
     position: absolute;
     right: 0rem;
+    margin: 1rem;
+    z-index: 1;
+}
+.back {
+    position: absolute;
+    left: 0rem;
     margin: 1rem;
     z-index: 1;
 }
@@ -156,6 +163,12 @@ button:active, .big-button:active {
     float: right;
     z-index: 1;
 }
+.left {
+    display: inline-block;
+    text-align: left;
+    float: left;
+    z-index: 1;
+}
 
 .App-header {
     background-color: #282c34;
@@ -165,7 +178,6 @@ button:active, .big-button:active {
     align-items: center;
     justify-content: center;
     font-size: calc(10px + 2vmin);
-
 }
 
 .App-link {
@@ -181,32 +193,34 @@ button:active, .big-button:active {
     }
 }
 
-
-html{
+html {
     padding: 0;
     margin: 0;
 }
-body{
+body {
     width: 100%;
     height: 100%;
     overflow: hidden;
     padding: 0;
     margin: 0;
 }
-h1{
+.sidebar {
+    width: 25%;
+}
+h1 {
     font-family: Bahnschrift, serif;
     text-align: left;
     margin-left: 20px;
 }
 h2 {
+    width: 100%;
     text-align: center;
     display: inline;
     font-family: Bahnschrift, serif;
 }
-.orange-text{
+.orange-text {
     color: rgb(241, 90, 41);
 }
-
 .relative {
     position: relative;
 }
@@ -233,7 +247,20 @@ h2 {
     flex: 3;
 }
 #next {
-    margin: 0;
     position: absolute;
     right: 2rem;
+}
+.censored {
+    z-index: 1;
+    background-color: black;
+    position: absolute;
+    bottom: 0.3rem;
+    height: 3rem;
+    width: 40rem;
+    text-align: center;
+    font-family: Bahnschrift, serif;
+    color: white;
+}
+.censored > h2 {
+    color: white;
 }

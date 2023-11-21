@@ -1,5 +1,5 @@
-.img{
-    width: 50rem;
+.img {
+    width: 80vh;
     display: block;
     margin: 0 auto;
     overflow-y: hidden;
@@ -8,9 +8,9 @@
     z-index: 1;
     background-color: black;
     position: absolute;
-    bottom: 0.3rem;
-    height: 3rem;
-    width: 50rem;
+    bottom: 0.7rem;
+    height: 9rem;
+    width: 40rem;
     text-align: center;
     font-family: Bahnschrift, serif;
     color: white;
@@ -18,4 +18,16 @@
 
 .censored > h2 {
     color: white;
+    font-size: 3rem;
+    font-width: bold;
+    letter-spacing: 15px;
+}
+.upperCensored {
+    z-index: 1;
+    background-color: black;
+    position: absolute;
+    top: opx;
+    right: 0px;
+    height: 2.1rem;
+    width: 50rem;
 }
