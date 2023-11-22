@@ -4,22 +4,12 @@ import Title from '@/components/Ui/Title'
 import CodeComposer from '@/components/CodeComposer/CodeComposer'
 import Canvas from '@/components/CodeComposer/Canvas'
 import Button from '@/components/Ui/Button'
+import { htmlConsts } from '@/app/games/html/htmlConsts'
 
 export default function HtmlGame() {
-    const html_code: string =
-        '<!DOCTYPE html>\n' +
-        '<html>\n' +
-        '<body>\n' +
-        '\n' +
-        '<h2 title="I\'m a header">The title Attribute</h2>\n' +
-        '\n' +
-        '<p title="I\'m a tooltip">Mouse over this paragraph, to display the title attribute as a tooltip.</p>\n' +
-        '\n' +
-        '</body>\n' +
-        '</html>\n' +
-        '<n></n>'
+    var html_code = htmlConsts[0].code
 
-    const [playerCode, setPlayerCode] = useState(html_code)
+    const [playerCode, setPlayerCode] = useState('')
     const [sampleCode, setSampleCode] = useState(html_code)
 
     const helpButtons = [
@@ -67,6 +57,9 @@ export default function HtmlGame() {
                             </div>
                         </div>
                         <Canvas code={sampleCode} />
+                        <div className='full-width'></div>
+                        <Button text={'Hint megtekintése'} color='transparent' onClick={() => {}} />
+                        <p>adsfj;kldsfjadskfjads;k fadskfhadsf</p>
                     </div>
                     <div>
                         <div className='full-width'>
