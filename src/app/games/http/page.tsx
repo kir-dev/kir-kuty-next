@@ -121,41 +121,43 @@ export default function HttpGame() {
     }, [animalIdx])
     return (
         <div className='App'>
-            <Title />
-            <div className='instruction'>
-                <h2>Melyik HTTP állapotkódra utalhat a kép?</h2>
-            </div>
-            <div className='container'>
+            <div className='main-content-column'>
+                <Title />
                 {animalIdx == -1 ? (
                     <>
-                        <div>
-                            <h1>Válassz egy állatot, amivel szeretnél játszani!</h1>
+                        <div className='flex-section-100'>
+                            <div className='instruction'>
+                                <h2>Válassz egy állatot, amivel szeretnél játszani!</h2>
+                            </div>
+                            {animals.map((animal, idx) => (
+                                <button key={idx} onClick={() => setAnimalIdx(idx)} className={'button'}>
+                                    <h2>{animal.name}</h2>
+                                    <div className={styles.icon}>{animal.svg}</div>
+                                </button>
+                            ))}
                         </div>
-                        {animals.map((animal, idx) => (
-                            <button key={idx} onClick={() => setAnimalIdx(idx)} className={'big-button'}>
-                                <h2>{animal.name}</h2>
-                                <div className={styles.icon}>{animal.svg}</div>
-                            </button>
-                        ))}
                     </>
                 ) : (
                     <>
-                        <div className='main-content'>
-                            <div style={{ display: 'flex' }}>
-                                <div className='sidebar'>
-                                    <p id='history'>Try to guess the corresponding error message to the code, using the image as help!</p>
-                                </div>
+                        <div className='instruction'>
+                            <h2>Melyik HTTP állapotkódra utalhat a kép?</h2>
+                        </div>
+                        <div className='main-content-row'>
+                            <div className='sidebar'>
+                                <p id='history'></p>
+                            </div>
+                            <div className='centerbar'>
                                 <ImageContainer
                                     errorCode={answers.correctHttpCode}
                                     animalName={animals[animalIdx].name}
                                     src={animals[animalIdx].url}
                                 />
-                                <div className='sidebar'>
-                                    <p className={styles.score}>{score}</p>
-                                </div>
                             </div>
-                            <ButtonRow answers={answers} onClick={vote} revealed={revealed} onNext={next} onAbort={() => setAnimalIdx(-1)} />
+                            <div className='sidebar'>
+                                <p className={styles.score}>{score}</p>
+                            </div>
                         </div>
+                        <ButtonRow answers={answers} onClick={vote} revealed={revealed} onNext={next} onAbort={() => setAnimalIdx(-1)} />
                     </>
                 )}
             </div>

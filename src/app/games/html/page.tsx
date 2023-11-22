@@ -28,12 +28,12 @@ export default function HtmlGame() {
 
     return (
         <div className='App'>
-            <Title />
-            <div className='instruction'>
-                <h2>Próbáld meg rekreálni a HTML kódját a minta szövegnek!</h2>
-            </div>
-            <div className='container'>
-                <div className='main-content'>
+            <div className='main-content-column'>
+                <Title />
+                <div className='instruction'>
+                    <h2>Próbáld meg rekreálni a HTML kódját a minta szövegnek!</h2>
+                </div>
+                <div className='main-content-row'>
                     <div className='sidebar'>
                         <div className='full-width'>
                             <div className='center'>
@@ -49,9 +49,6 @@ export default function HtmlGame() {
                         <div className='full-width'>
                             <div className='center'>
                                 <h2>Kód</h2>
-                            </div>
-                            <div className='right next'>
-                                <Button text={'Renderelés'} color={'var(--background)'} onClick={() => {}} />
                             </div>
                         </div>
                         <CodeComposer onCodeChange={handleChildCodeChange} />
