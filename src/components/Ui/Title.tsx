@@ -7,7 +7,7 @@ export default function Title() {
     return (
         <Link href={'/'}>
             <h1 className={styles.headerTitle}>
-                <span className={'white-text'}>Kir</span>
+                <span className={'orange-text'}>Kir</span>
                 -Kuty
             </h1>
         </Link>

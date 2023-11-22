@@ -2,6 +2,7 @@ type buttonProps = {
     text: string
     onClick: (param: string) => void
     color: string | null
+    href?: string
 }
 export default function Button(props: buttonProps) {
     return (

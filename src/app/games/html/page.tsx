@@ -22,7 +22,24 @@ export default function HtmlGame() {
     const [playerCode, setPlayerCode] = useState(html_code)
     const [sampleCode, setSampleCode] = useState(html_code)
 
-    const helpButtons = ['<button>', '<p>', '<h2>', '<h1>']
+    const helpButtons = [
+        {
+            name: '<button>',
+            code: '<button></button>',
+        },
+        {
+            name: '<p>',
+            code: '<p></p>',
+        },
+        {
+            name: '<h1>',
+            code: '<h1></h1>',
+        },
+        {
+            name: '<h2>',
+            code: '<h2></h2>',
+        },
+    ]
 
     function handleChildCodeChange(content: string) {
         setPlayerCode(content)
@@ -60,7 +77,7 @@ export default function HtmlGame() {
                         <CodeComposer onCodeChange={handleChildCodeChange} code={playerCode} />
                         <div>
                             {helpButtons.map((cur, index) => (
-                                <Button key={index} text={cur} color='transparent' onClick={insertHelpButton} />
+                                <Button key={index} text={cur.name} color='transparent' onClick={() => insertHelpButton(cur.code)} />
                             ))}
                         </div>
                     </div>
