@@ -6,6 +6,7 @@ type imageProps = {
     errorCode: number
     animalName: string
     src: string
+    revealed: boolean
 }
 
 export function ImageContainer(props: imageProps) {
@@ -22,9 +23,11 @@ export function ImageContainer(props: imageProps) {
                         alt={props.animalName}
                     />
                 </div>
-                <div className={styles.censored}>
-                    <h2>CENSORED</h2>
-                </div>
+                {!props.revealed && (
+                    <div className={styles.censored}>
+                        <h2>CENSORED</h2>
+                    </div>
+                )}
             </div>
         </div>
     )

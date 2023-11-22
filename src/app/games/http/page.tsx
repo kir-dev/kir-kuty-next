@@ -5,6 +5,7 @@ import { httpStatusCodes, httpStatusNames } from '@/app/games/http/httpConsts'
 import ButtonRow from '@/components/Http-game/ButtonRow'
 import { ImageContainer } from '@/components/Http-game/ImageContainer'
 import styles from './styles.module.css'
+import WinPopup from '@/components/Http-game/WinPopup'
 
 export type Answers = {
     strings: string[]
@@ -73,6 +74,8 @@ export default function HttpGame() {
     })
     const [revealed, setRevealed] = useState(false)
     const [animalIdx, setAnimalIdx] = useState(0)
+    const [numberOfImages, setNumberOfImages] = useState(0)
+    const [showPopup, setShowPopup] = useState(false)
 
     function getRandomUniqueStatuses() {
         let usedIndexes: number[]
@@ -104,9 +107,13 @@ export default function HttpGame() {
             next()
         } else {
             setRevealed(true)
-        }
-        if (index == answers.correctBtnIndex) {
-            setScore(score => score + 1)
+            if (index == answers.correctBtnIndex) {
+                setScore(score => score + 1)
+            }
+            setNumberOfImages(numberOfImages => numberOfImages + 1)
+            if (numberOfImages == 9) {
+                setShowPopup(true)
+            }
         }
     }
 
@@ -118,13 +125,20 @@ export default function HttpGame() {
     useEffect(() => {
         getRandomUniqueStatuses()
         setScore(0)
+        setNumberOfImages(0)
     }, [animalIdx])
+
     return (
         <div className='App'>
             <div className='main-content-column'>
                 <Title />
+                {showPopup && <WinPopup score={score} onClose={() => setShowPopup(false)} />}
+
                 {animalIdx == -1 ? (
                     <>
+                        <div className='instruction'>
+                            <h2>Melyik HTTP állapotkódra utalhat a kép?</h2>
+                        </div>
                         <div className='flex-section-100'>
                             <div className='instruction'>
                                 <h2>Válassz egy állatot, amivel szeretnél játszani!</h2>
@@ -151,13 +165,23 @@ export default function HttpGame() {
                                     errorCode={answers.correctHttpCode}
                                     animalName={animals[animalIdx].name}
                                     src={animals[animalIdx].url}
+                                    revealed={revealed}
                                 />
                             </div>
                             <div className='sidebar'>
-                                <p className={styles.score}>{score}</p>
+                                <p className={styles.score}>{`${score} / ${numberOfImages}`}</p>
                             </div>
                         </div>
-                        <ButtonRow answers={answers} onClick={vote} revealed={revealed} onNext={next} onAbort={() => setAnimalIdx(-1)} />
+                        <ButtonRow
+                            answers={answers}
+                            onClick={vote}
+                            revealed={revealed}
+                            onNext={next}
+                            onAbort={() => {
+                                setAnimalIdx(-1)
+                                setRevealed(false)
+                            }}
+                        />
                     </>
                 )}
             </div>

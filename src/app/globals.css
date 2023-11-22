@@ -82,12 +82,12 @@ h2 {
     min-width: 200px;
     overflow-x: hidden;
     margin: 0 1rem;
-    border: 2px red dashed;
+    /* border: 2px red dashed; */
 }
 
 .centerbar {
     margin: 0 1rem;
-    border: 2px red dashed;
+    /* border: 2px red dashed; */
 }
 
 .content {
