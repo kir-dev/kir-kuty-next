@@ -11,13 +11,19 @@
     border-radius: 20px;
 }
 .title {
-    color: black;
-    font-size: xx-large;
+    color: #000000;
+    font-size: 50px;
+    margin: 1rem;
     font-weight: bold;
-    padding-bottom: 1rem;
     text-decoration: none;
 }
 .subtitle {
+    font-size: 20px;
     color: black;
-    font-size: medium;
+    background-color: rgba(251, 221, 221, 0.58);
+    background-color: white;
+    padding: 5px;
+    border-radius: 10px;
+    margin: 0.5rem;
+    margin-left: 1rem;
 }

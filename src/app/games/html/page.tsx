@@ -22,8 +22,14 @@ export default function HtmlGame() {
     const [playerCode, setPlayerCode] = useState(html_code)
     const [sampleCode, setSampleCode] = useState(html_code)
 
+    const helpButtons = ['<button>', '<p>', '<h2>', '<h1>']
+
     function handleChildCodeChange(content: string) {
         setPlayerCode(content)
+    }
+
+    function insertHelpButton(text: string) {
+        setPlayerCode(playerCode => playerCode + text)
     }
 
     return (
@@ -51,7 +57,12 @@ export default function HtmlGame() {
                                 <h2>Kód</h2>
                             </div>
                         </div>
-                        <CodeComposer onCodeChange={handleChildCodeChange} />
+                        <CodeComposer onCodeChange={handleChildCodeChange} code={playerCode} />
+                        <div>
+                            {helpButtons.map((cur, index) => (
+                                <Button key={index} text={cur} color='transparent' onClick={insertHelpButton} />
+                            ))}
+                        </div>
                     </div>
 
                     <div className='sidebar'>

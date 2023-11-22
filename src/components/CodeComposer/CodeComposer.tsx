@@ -3,6 +3,7 @@ import { ChangeEvent, useEffect, useState } from 'react'
 
 type CodeComposerProps = {
     onCodeChange: (code: string) => void
+    code: string
 }
 
 export default function CodeComposer(props: CodeComposerProps) {
@@ -12,7 +13,13 @@ export default function CodeComposer(props: CodeComposerProps) {
         props.onCodeChange(code)
     }, [code])
 
+    useEffect(() => {
+        setCode(props.code)
+        console.log(props.code)
+    }, [props.code])
+
     function handleChange(event: ChangeEvent<HTMLTextAreaElement>) {
+        props.onCodeChange(event.target.value)
         setCode(event.target.value)
     }
 

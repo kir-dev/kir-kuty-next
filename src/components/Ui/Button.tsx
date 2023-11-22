@@ -1,11 +1,16 @@
 type buttonProps = {
-    text: String
-    onClick: () => void | null
+    text: string
+    onClick: (param: string) => void
     color: string | null
 }
 export default function Button(props: buttonProps) {
     return (
-        <button onClick={props.onClick} style={props.color ? { backgroundColor: props.color } : {}}>
+        <button
+            onClick={() => {
+                props.onClick(props.text)
+            }}
+            style={props.color ? { backgroundColor: props.color } : {}}
+        >
             {props.text}
         </button>
     )
