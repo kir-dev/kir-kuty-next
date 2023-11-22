@@ -141,16 +141,21 @@ export default function HttpGame() {
                 ) : (
                     <>
                         <div className='main-content'>
-                            <div className='sidebar'>
-                                <p id='history'>Try to guess the corresponding error message to the code, using the image as help!</p>
+                            <div style={{ display: 'flex' }}>
+                                <div className='sidebar'>
+                                    <p id='history'>Try to guess the corresponding error message to the code, using the image as help!</p>
+                                </div>
+                                <ImageContainer
+                                    errorCode={answers.correctHttpCode}
+                                    animalName={animals[animalIdx].name}
+                                    src={animals[animalIdx].url}
+                                />
+                                <div className='sidebar'>
+                                    <p className={styles.score}>{score}</p>
+                                </div>
                             </div>
-                            <ImageContainer errorCode={answers.correctHttpCode} animalName={animals[animalIdx].name} src={animals[animalIdx].url} />
-                            <div className='sidebar'>
-                                <p className={styles.score}>{score}</p>
-                            </div>
+                            <ButtonRow answers={answers} onClick={vote} revealed={revealed} onNext={next} onAbort={() => setAnimalIdx(-1)} />
                         </div>
-
-                        <ButtonRow answers={answers} onClick={vote} revealed={revealed} onNext={next} onAbort={() => setAnimalIdx(-1)} />
                     </>
                 )}
             </div>
