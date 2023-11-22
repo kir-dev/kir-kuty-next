@@ -85,6 +85,11 @@ h2 {
     /* border: 2px red dashed; */
 }
 
+.result {
+    font-size: 20px;
+    font-family: Consolas;
+}
+
 .centerbar {
     margin: 0 1rem;
     /* border: 2px red dashed; */

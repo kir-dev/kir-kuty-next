@@ -33,13 +33,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 0px;
     z-index: 99;
 }
 .popupMain {
     position: relative;
     background: white;
     padding: 20px;
-    border-radius: 5px;
+    padding-right: 40px;
+    border-radius: 20px;
 }
 .popupMain > h1 {
     text-align: center;

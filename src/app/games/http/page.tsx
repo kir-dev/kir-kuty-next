@@ -165,8 +165,8 @@ export default function HttpGame() {
                                     revealed={revealed}
                                 />
                             </div>
-                            <div className='sidebar'>
-                                <p className={styles.score}>{`${score} / ${numberOfImages}`}</p>
+                            <div className='sidebar result'>
+                                <p className={styles.score}>{`${score} megszerzett / ${numberOfImages} pont`}</p>
                             </div>
                         </div>
                         <ButtonRow
