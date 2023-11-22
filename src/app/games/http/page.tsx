@@ -135,10 +135,7 @@ export default function HttpGame() {
                 {showPopup && <WinPopup score={score} onClose={() => setShowPopup(false)} />}
 
                 {animalIdx == -1 ? (
-                    <>
-                        <div className='instruction'>
-                            <h2>Melyik HTTP állapotkódra utalhat a kép?</h2>
-                        </div>
+                    <div className='main-content-column'>
                         <div className='flex-section-100'>
                             <div className='instruction'>
                                 <h2>Válassz egy állatot, amivel szeretnél játszani!</h2>
@@ -150,7 +147,7 @@ export default function HttpGame() {
                                 </button>
                             ))}
                         </div>
-                    </>
+                    </div>
                 ) : (
                     <>
                         <div className='instruction'>
