@@ -22,11 +22,9 @@ export function ImageContainer(props: imageProps) {
                         alt={props.animalName}
                     />
                 </div>
-                {/*<div className={styles.censored}>
-                    <h2>
-                        {props.errorCode} <br /> CENSORED
-                    </h2>
-                </div>*/}
+                <div className={styles.censored}>
+                    <h2>CENSORED</h2>
+                </div>
             </div>
         </div>
     )

@@ -8,12 +8,13 @@
     z-index: 1;
     background-color: black;
     position: absolute;
-    bottom: 0.7rem;
-    height: 9rem;
+    bottom: 0.1rem;
+    height: 3rem;
     width: 40rem;
     text-align: center;
     font-family: Bahnschrift, serif;
     color: white;
+    width: 100%;
 }
 
 .censored > h2 {
@@ -21,13 +22,4 @@
     font-size: 3rem;
     font-width: bold;
     letter-spacing: 15px;
-}
-.upperCensored {
-    z-index: 1;
-    background-color: black;
-    position: absolute;
-    top: opx;
-    right: 0px;
-    height: 2.1rem;
-    width: 50rem;
 }
