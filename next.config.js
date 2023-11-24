@@ -9,7 +9,7 @@ const nextConfig = {
         ],
     },
     experimental: {
-        serverComponentsExternalPackages: ['puppeteer', 'looks-same'],
+        serverComponentsExternalPackages: ['puppeteer-core', 'looks-same'],
     }
 }
 
