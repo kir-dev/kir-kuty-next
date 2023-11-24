@@ -198,8 +198,8 @@ button:active {
     display: flex;
     position: relative;
     vertical-align: center;
-    margin: 0px 0px;
-    padding: 10px;
+    margin: 20px 0px;
+    padding: 10px 0;
 }
 
 .full-width h2 {
@@ -236,6 +236,10 @@ button:active {
 
 .App-link {
     color: #61dafb;
+}
+
+.margin-t-80 {
+    margin-top: 160px;
 }
 
 @keyframes App-logo-spin {
@@ -275,7 +279,7 @@ h2 {
 }
 
 .orange-text {
-    color: rgb(241, 90, 41);
+    color: var(--kir-dev-orange);
 }
 
 .white-text {
