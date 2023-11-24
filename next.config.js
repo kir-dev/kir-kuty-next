@@ -8,6 +8,9 @@ const nextConfig = {
             },
         ],
     },
+    experimental: {
+        serverComponentsExternalPackages: ['puppeteer', 'looks-same'],
+    }
 }
 
 module.exports = nextConfig

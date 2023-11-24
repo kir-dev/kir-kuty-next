@@ -5,6 +5,7 @@ import CodeComposer from '@/components/CodeComposer/CodeComposer'
 import Canvas from '@/components/CodeComposer/Canvas'
 import Button from '@/components/Ui/Button'
 import { htmlConsts } from '@/app/games/html/htmlConsts'
+import type { ValidationBody, ValidationResponse } from '@/app/games/api/html/validation/route'
 
 const helpButtons = [
     {
@@ -27,12 +28,15 @@ const helpButtons = [
 export default function HtmlGame() {
     const [playerLvl, setPlayerLvl] = useState(0)
     const [hintRevealed, setHintRevealed] = useState(false)
+    const [isCorrect, setIsCorrect] = useState<boolean | null>(null)
+    const [isLoading, setIsLoading] = useState(false)
 
-    var html_code = htmlConsts[playerLvl]
-    const [sampleCode, setSampleCode] = useState(html_code)
+    const sampleCode = htmlConsts[playerLvl]
     const [playerCode, setPlayerCode] = useState('')
 
     function handleChildCodeChange(content: string) {
+        setIsCorrect(null)
+        setIsLoading(false)
         setPlayerCode(content)
     }
 
@@ -42,8 +46,9 @@ export default function HtmlGame() {
 
     function skipLvl() {
         setPlayerLvl(playerLvl => (playerLvl + 1) % htmlConsts.length)
-        setSampleCode(htmlConsts[playerLvl])
         setHintRevealed(false)
+        setIsCorrect(null)
+        setIsLoading(false)
     }
 
     function revealHint() {
@@ -112,6 +117,25 @@ export default function HtmlGame() {
                             </div>
                         </div>
                         <Canvas code={playerCode} />
+                        {playerCode && <div className='full-width'>
+                            {isLoading && <div className='center'><h2>Egy pillanat...</h2></div>}
+                            {isCorrect !== null && <div className='center'>
+                                <h2>{isCorrect ? "Helyes! 😊" : "Még nem jó! 😞"}</h2>
+                            </div>}
+                            <div className='right next'>
+                                <Button text='Ellenőrzés' color='transparent' onClick={async () => {
+                                    const body: ValidationBody = { taskId: playerLvl, solution: playerCode }
+                                    setIsLoading(true)
+                                    setIsCorrect(null)
+                                    const response = await fetch('api/html/validation', {
+                                        method: 'POST',
+                                        body: JSON.stringify(body),
+                                    })
+                                    setIsLoading(false)
+                                    setIsCorrect((await response.json() as ValidationResponse).similar)
+                                }} />
+                            </div>
+                        </div>}
                     </div>
                 </div>
             </div>
