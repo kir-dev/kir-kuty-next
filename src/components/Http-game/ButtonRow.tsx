@@ -24,6 +24,7 @@ export default function ButtonRow(props: buttonRowProps) {
                     <Button
                         key={index}
                         text={answer}
+                        big={true}
                         onClick={() => props.onClick(index)}
                         color={props.revealed ? (props.answers.correctBtnIndex == index ? 'var(--green)' : 'var(--red)') : 'transparent'}
                     />

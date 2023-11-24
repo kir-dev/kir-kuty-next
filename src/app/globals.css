@@ -110,16 +110,20 @@ h2 {
 
 button,
 .button {
-    font-size: 20px;
     padding: 5px 10px;
     margin: 8px 8px;
     background: none;
+    font-size: 20px;
     border-radius: 10px;
     border: 3px solid black;
     font-family: Bahnschrift, serif;
     display: inline-block;
     box-shadow: black 4px 4px 0px;
     transition: 0.1s ease-in-out;
+}
+
+.button-with-big-text {
+    font-size: 28px;
 }
 
 .button {
