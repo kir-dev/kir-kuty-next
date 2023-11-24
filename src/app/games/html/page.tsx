@@ -6,30 +6,31 @@ import Canvas from '@/components/CodeComposer/Canvas'
 import Button from '@/components/Ui/Button'
 import { htmlConsts } from '@/app/games/html/htmlConsts'
 
+const helpButtons = [
+    {
+        name: '<p>',
+        code: '<p></p>',
+    },
+    {
+        name: '<h1>',
+        code: '<h1></h1>',
+    },
+    {
+        name: '<h2>',
+        code: '<h2></h2>',
+    },
+    {
+        name: '<button>',
+        code: '<button></button>',
+    },
+]
 export default function HtmlGame() {
-    var html_code = htmlConsts[0].code
+    const [playerLvl, setPlayerLvl] = useState(0)
+    const [hintRevealed, setHintRevealed] = useState(false)
 
-    const [playerCode, setPlayerCode] = useState('')
+    var html_code = htmlConsts[playerLvl]
     const [sampleCode, setSampleCode] = useState(html_code)
-
-    const helpButtons = [
-        {
-            name: '<button>',
-            code: '<button></button>',
-        },
-        {
-            name: '<p>',
-            code: '<p></p>',
-        },
-        {
-            name: '<h1>',
-            code: '<h1></h1>',
-        },
-        {
-            name: '<h2>',
-            code: '<h2></h2>',
-        },
-    ]
+    const [playerCode, setPlayerCode] = useState('')
 
     function handleChildCodeChange(content: string) {
         setPlayerCode(content)
@@ -37,6 +38,16 @@ export default function HtmlGame() {
 
     function insertHelpButton(text: string) {
         setPlayerCode(playerCode => playerCode + text)
+    }
+
+    function skipLvl() {
+        setPlayerLvl(playerLvl => (playerLvl + 1) % htmlConsts.length)
+        setSampleCode(htmlConsts[playerLvl])
+        setHintRevealed(false)
+    }
+
+    function revealHint() {
+        setHintRevealed(!hintRevealed)
     }
 
     return (
@@ -53,13 +64,23 @@ export default function HtmlGame() {
                                 <h2>Minta</h2>
                             </div>
                             <div className='right next'>
-                                <Button text={'Következő'} color={'var(--background)'} onClick={() => {}} />
+                                <Button text={'Következő'} color={'var(--background)'} onClick={skipLvl} />
                             </div>
                         </div>
-                        <Canvas code={sampleCode} />
-                        <div className='full-width'></div>
-                        <Button text={'Hint megtekintése'} color='transparent' onClick={() => {}} />
-                        <p>adsfj;kldsfjadskfjads;k fadskfhadsf</p>
+                        <Canvas code={sampleCode.code} />
+                        <div className='full-width'>
+                            <div className='center'>
+                                <h2>Hint</h2>
+                            </div>
+                            <div className='right next'>
+                                {hintRevealed ? (
+                                    <Button text={'Hint elrejtése'} color='transparent' onClick={revealHint} />
+                                ) : (
+                                    <Button text={'Hint megtekintése'} color='transparent' onClick={revealHint} />
+                                )}
+                            </div>
+                        </div>
+                        {hintRevealed && <p>{sampleCode.hint}</p>}
                     </div>
                     <div>
                         <div className='full-width'>

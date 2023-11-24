@@ -205,7 +205,8 @@ button:active {
 .full-width h2 {
     height: 100%;
     display: inline-block;
-    margin-top: 8px;
+    margin-top: 12px;
+    font-size: 24px;
     margin-bottom: 0;
 }
 

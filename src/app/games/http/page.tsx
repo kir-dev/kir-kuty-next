@@ -6,6 +6,7 @@ import ButtonRow from '@/components/Http-game/ButtonRow'
 import { ImageContainer } from '@/components/Http-game/ImageContainer'
 import styles from './styles.module.css'
 import WinPopup from '@/components/Http-game/WinPopup'
+import Button from '@/components/Ui/Button'
 
 export type Answers = {
     strings: string[]
@@ -155,7 +156,32 @@ export default function HttpGame() {
                         </div>
                         <div className='main-content-row'>
                             <div className='sidebar'>
-                                <p id='history'></p>
+                                <div className='left'>
+                                    <h2> Mi is ez a játék? </h2>
+                                    <p>
+                                        Biztos találkoztál már az ERROR 404-el! De azt nem biztos, hogy tudtad, hogy pontosan mit is jelent ez, vagy
+                                        hogy miért szokott megjelenni.
+                                    </p>
+                                    <p>
+                                        A weboldalak általában úgy működnek, hogy amikor megnyitsz egy oldalt, a böngésződ elküld egy kérést a
+                                        szervernek, amely válaszol a kérésre és jó esetben visszaküldi az oldalt. Ha azonban valami galiba történik,
+                                        akkor a szerver weboldal helyett egy hibaüzenetet küld vissza a böngészőnek, amely segít megérteni, mi is
+                                        csúszhatott félre.
+                                    </p>
+                                    <p>
+                                        Ilyen például a HTTP error 404, ami azt jelenti, a szerver nem találta meg a keresett weboldalt vagy fájlt,
+                                        mert az nem létezik.
+                                    </p>
+                                    <p>
+                                        A játék során a feladatod, hogy kitaláld, melyik HTTP állapotkódhoz tartozik az adott, állatokkal illusztrált
+                                        kép.
+                                    </p>
+                                    <Button
+                                        text={'Bővebben a HTTP állapotkódokról >'}
+                                        color={'transparent'}
+                                        onClick={() => window.open('https://hu.wikipedia.org/wiki/HTTP-%C3%A1llapotk%C3%B3dok')}
+                                    />
+                                </div>
                             </div>
                             <div className='centerbar'>
                                 <ImageContainer
