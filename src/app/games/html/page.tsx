@@ -82,14 +82,14 @@ export default function HtmlGame() {
                         </div>
                         <div className={'left'}>{hintRevealed && <p>{sampleCode.hint}</p>}</div>
 
-                        {/*disgusting*/}
+                        {/*                        disgusting
                         <div className='margin-t-80'></div>
                         <h2> Mi is ez a játék? </h2>
                         <p className='left'>
                             A weboldalak valójában nagyon egyszerű kicsi komponensekből állnak, ezek felépítésére használjuk a HTML kódokat. A
                             feladatod az, hogy megpróbáld lemásolni a mintaként kapott oldalt, hogy a képernyő jobb oldalán is hasonló oldalt kapj!
                             Ehhez írj kódot a középső panelbe!
-                        </p>
+                        </p>*/}
                     </div>
                     <div>
                         <div className='full-width'>
