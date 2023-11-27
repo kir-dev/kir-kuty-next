@@ -19,10 +19,10 @@ export const htmlConsts: HtmlSample[] = [
         difficulty: 3,
         code:
             '<h2>Pilinszky János - Átváltozás</h2>' +
-            '<p> Rossz voltam, s te azt mondtad, jó vagyok.<br></br>' +
-            'Csúf, de te gyönyörűnek találtál.<br></br>' +
-            'Végig hallgattad mindig, amit mondtam.<br></br>' +
-            'Halandóból így lettem halhatatlan.</p>' +
+            '<p>Rossz voltam, s te azt mondtad, jó vagyok.</p>' +
+            '<p>Csúf, de te gyönyörűnek találtál.</p>' +
+            '<p>Végig hallgattad mindig, amit mondtam.</p>' +
+            '<p>Halandóból így lettem halhatatlan.</p>' +
             '<button href="https://hu.wikipedia.org/wiki/Pilinszky_J%C3%A1nos">Wikipedia</button>',
         hint: 'most már három taget is kell használnod(...durva), ahhoz, hogy a fenti szöveg címsorba kerüljön, bekezdés és egy gomb is legyen a szövegben',
     },
