@@ -11,7 +11,7 @@ type buttonRowProps = {
     onAbort?: () => void
 }
 
-export default function ButtonRow(props: buttonRowProps) {
+export default function ButtonRowForHttp(props: buttonRowProps) {
     return (
         <div className={'full-width'}>
             {props.onAbort && (

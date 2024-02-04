@@ -2,7 +2,7 @@
 import React, { ReactNode, useEffect, useState } from 'react'
 import Title from '@/components/Ui/Title'
 import { httpStatusCodes, httpStatusNames } from '@/app/games/http/httpConsts'
-import ButtonRow from '@/components/Http-game/ButtonRow'
+import ButtonRowForHttp from '@/components/Http-game/ButtonRowForHttp'
 import { ImageContainer } from '@/components/Http-game/ImageContainer'
 import styles from './styles.module.css'
 import WinPopup from '@/components/Http-game/WinPopup'
@@ -10,7 +10,7 @@ import Button from '@/components/Ui/Button'
 
 export type Answers = {
     strings: string[]
-    correctHttpCode: number
+    correctAnswerText: number
     correctBtnIndex: number
 }
 type Animal = {
@@ -71,7 +71,7 @@ export default function HttpGame() {
     const [answers, setAnswers] = useState<Answers>({
         strings: [''],
         correctBtnIndex: 0,
-        correctHttpCode: 0,
+        correctAnswerText: 0,
     })
     const [revealed, setRevealed] = useState(false)
     const [animalIdx, setAnimalIdx] = useState(0)
@@ -99,7 +99,7 @@ export default function HttpGame() {
         setAnswers({
             strings: usedIndexes.map(index => httpStatusNames[index]),
             correctBtnIndex: correctBtnIndex,
-            correctHttpCode: correctHttpCode,
+            correctAnswerText: correctHttpCode,
         })
     }
 
@@ -185,8 +185,8 @@ export default function HttpGame() {
                             </div>
                             <div className='centerbar'>
                                 <ImageContainer
-                                    errorCode={answers.correctHttpCode}
-                                    animalName={animals[animalIdx].name}
+                                    errorCode={answers.correctAnswerText}
+                                    altText={animals[animalIdx].name}
                                     src={animals[animalIdx].url}
                                     revealed={revealed}
                                 />
@@ -195,7 +195,7 @@ export default function HttpGame() {
                                 <p className={styles.score}>{`${score} megszerzett / ${numberOfImages} pont`}</p>
                             </div>
                         </div>
-                        <ButtonRow
+                        <ButtonRowForHttp
                             answers={answers}
                             onClick={vote}
                             revealed={revealed}

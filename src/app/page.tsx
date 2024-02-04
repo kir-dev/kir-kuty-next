@@ -14,6 +14,7 @@ export default function Home() {
                     iconPath={'/kuty.png'}
                 />
                 <MenuItem href='games/html' title={'HTML építő'} subTitle={'Alkosd meg saját weboldalad a minta alapján!'} iconPath={'/html.png'} />
+                <MenuItem href='/games/quiz' title={'Kir-Quiz'} subTitle={'És te mennyit tudsz a körről?'} iconPath={'/quiz.png'} />
                 <MenuItem href='https://fontero.vercel.app/' title={'Fontero'} subTitle={'Egy másik nagyon kafa játék!'} iconPath={'/js.png'} />
             </div>
         </main>
