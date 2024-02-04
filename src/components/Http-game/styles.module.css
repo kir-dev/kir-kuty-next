@@ -3,15 +3,16 @@
     display: block;
     margin: 0 auto;
     overflow-y: hidden;
+    object-fit: cover;
 }
 .censored {
     z-index: 1;
     background-color: black;
     position: absolute;
     bottom: 0.1rem;
-    height: 3rem;
-    width: 40rem;
+    height: 10%;width: 40rem;
     text-align: center;
+    vertical-align: center;
     font-family: Bahnschrift, serif;
     color: white;
     width: 100%;
@@ -19,7 +20,7 @@
 
 .censored > h2 {
     color: white;
-    font-size: 3rem;
+    font-size: x-large;
     font-width: bold;
     letter-spacing: 15px;
 }
@@ -45,4 +46,28 @@
 }
 .popupMain > h1 {
     text-align: center;
+}
+
+.options {
+    flex-basis: 60%;
+}
+
+.buttoncontainer{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+@media (max-width: 800px) {
+    .buttoncontainer div:nth-child(odd) {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    .buttoncontainer div:nth-child(even) {
+        flex-basis: 100%;
+        margin: auto;
+        order: 3;
+    }
 }

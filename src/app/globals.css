@@ -59,6 +59,7 @@ h2 {
 }
 
 .main-content-column {
+    width: 100%;
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -72,7 +73,8 @@ h2 {
     display: flex;
     flex-direction: row;
     flex: 1;
-    justify-content: space-between;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .sidebar {
@@ -92,10 +94,15 @@ h2 {
 .centerbar {
     margin: 0 1rem;
     /* border: 2px red dashed; */
+    min-width: 50%;
+    padding: 0;
+    justify-content: center;
+    margin: auto;
+
 }
 
 .content {
-    display: flex;
+    max-width: 1000px;display: flex;
     flex-direction: column;
     align-items: center;
     flex: 3;
@@ -105,6 +112,7 @@ h2 {
     width: fit-content;
     display: inline-block;
     margin: 1rem auto;
+    flex-basis: 60%;
 }
 
 button,
@@ -178,17 +186,19 @@ button:active {
 }
 
 .next {
-    position: absolute;
+    float: right;
     right: 0rem;
     margin: 1rem;
     z-index: 1;
+    flex-basis: 15%;
 }
 
 .back {
-    position: absolute;
+    float: left;
     left: 0rem;
     margin: 1rem;
     z-index: 1;
+    flex-basis: 15%;
 }
 
 .App {
@@ -199,6 +209,7 @@ button:active {
 .full-width {
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     position: relative;
     vertical-align: center;
     margin: 20px 0px;
@@ -304,7 +315,6 @@ h2 {
 }
 
 #next {
-    position: absolute;
     right: 2rem;
 }
 
