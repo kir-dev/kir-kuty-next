@@ -27,7 +27,6 @@ html {
 body {
     width: 100%;
     height: 100%;
-    overflow: hidden;
     padding: 0;
     margin: 0;
     background-color: var(--background);
@@ -263,7 +262,6 @@ html {
 body {
     width: 100%;
     height: 100vh;
-    overflow: hidden;
     padding: 0;
     margin: 0;
 }
@@ -331,6 +329,11 @@ h2 {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: 100%;
     width: 100%;
+}
+
+@media (max-width: 900px){
+    .flex-section-100 a{
+        width: 85%;
+    }
 }
