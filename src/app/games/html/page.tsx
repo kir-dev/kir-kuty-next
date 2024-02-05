@@ -68,16 +68,11 @@ export default function HtmlGame() {
                             <div className='center'>
                                 <h2>Minta</h2>
                             </div>
-                            <div className='right next'>
-                                <Button text={'Következő'} color={'var(--background)'} onClick={skipLvl} />
-                            </div>
                         </div>
                         <Canvas code={sampleCode.code} />
                         <div className='full-width'>
                             <div className='center'>
-                                <h2>Hint</h2>
-                            </div>
-                            <div className='right next'>
+                                <Button text={'Következő feladat'} color={'var(--background)'} onClick={skipLvl} />
                                 {hintRevealed ? (
                                     <Button text={'Hint elrejtése'} color='transparent' onClick={revealHint} />
                                 ) : (
@@ -96,7 +91,7 @@ export default function HtmlGame() {
                             Ehhez írj kódot a középső panelbe!
                         </p>*/}
                     </div>
-                    <div>
+                    <div className='codespace'>
                         <div className='full-width'>
                             <div className='center'>
                                 <h2>Kód</h2>

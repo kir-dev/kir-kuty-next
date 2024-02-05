@@ -97,7 +97,6 @@ h2 {
     min-width: 50%;
     padding: 0;
     justify-content: center;
-    margin: auto;
 
 }
 
@@ -112,7 +111,6 @@ h2 {
     width: fit-content;
     display: inline-block;
     margin: 1rem auto;
-    flex-basis: 60%;
 }
 
 button,
@@ -334,6 +332,14 @@ h2 {
     color: white;
 }
 
+.codespace{
+    padding-bottom: 5rem;
+    min-height: 30rem;
+    flex: 1 0 50%;
+    margin: 0 1rem;
+
+}
+
 .flex-section-100 {
     display: flex;
     align-items: center;
@@ -342,8 +348,13 @@ h2 {
     width: 100%;
 }
 
-@media (max-width: 900px){
+@media (max-width: 1000px){
     .flex-section-100 a{
         width: 85%;
+    }
+
+    .codespace {
+        order: -1;
+        flex: 1 0 90%;
     }
 }
