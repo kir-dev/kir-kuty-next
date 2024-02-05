@@ -10,7 +10,8 @@
     background-color: black;
     position: absolute;
     bottom: 0.1rem;
-    height: 10%;width: 40rem;
+    height: 10%;
+    width: 40rem;
     text-align: center;
     vertical-align: center;
     font-family: Bahnschrift, serif;
@@ -52,7 +53,7 @@
     flex-basis: 60%;
 }
 
-.buttoncontainer{
+.buttoncontainer {
     width: 100%;
     display: flex;
     flex-wrap: wrap;

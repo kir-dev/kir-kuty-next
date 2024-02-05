@@ -95,13 +95,12 @@ h2 {
     margin: 0 1rem;
     /* border: 2px red dashed; */
     min-width: 50%;
-    padding: 0;
     justify-content: center;
-
 }
 
 .content {
-    max-width: 1000px;display: flex;
+    max-width: 900px;
+    display: flex;
     flex-direction: column;
     align-items: center;
     flex: 3;
@@ -313,6 +312,7 @@ h2 {
 }
 
 #next {
+    position: absolute;
     right: 2rem;
 }
 
@@ -332,12 +332,11 @@ h2 {
     color: white;
 }
 
-.codespace{
+.codespace {
     padding-bottom: 5rem;
     min-height: 30rem;
     flex: 1 0 50%;
     margin: 0 1rem;
-
 }
 
 .flex-section-100 {
@@ -348,8 +347,8 @@ h2 {
     width: 100%;
 }
 
-@media (max-width: 1000px){
-    .flex-section-100 a{
+@media (max-width: 1000px) {
+    .flex-section-100 a {
         width: 85%;
     }
 

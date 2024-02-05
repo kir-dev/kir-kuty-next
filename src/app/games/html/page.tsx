@@ -112,25 +112,37 @@ export default function HtmlGame() {
                             </div>
                         </div>
                         <Canvas code={playerCode} />
-                        {playerCode && <div className='full-width'>
-                            {isLoading && <div className='center'><h2>Egy pillanat...</h2></div>}
-                            {isCorrect !== null && <div className='center'>
-                                <h2>{isCorrect ? "Helyes! 😊" : "Még nem jó! 😞"}</h2>
-                            </div>}
-                            <div className='right next'>
-                                <Button text='Ellenőrzés' color='transparent' onClick={async () => {
-                                    const body: ValidationBody = { taskId: playerLvl, solution: playerCode }
-                                    setIsLoading(true)
-                                    setIsCorrect(null)
-                                    const response = await fetch('api/html/validation', {
-                                        method: 'POST',
-                                        body: JSON.stringify(body),
-                                    })
-                                    setIsLoading(false)
-                                    setIsCorrect((await response.json() as ValidationResponse).similar)
-                                }} />
+                        {playerCode && (
+                            <div className='full-width'>
+                                {isLoading && (
+                                    <div className='center'>
+                                        <h2>Egy pillanat...</h2>
+                                    </div>
+                                )}
+                                {isCorrect !== null && (
+                                    <div className='center'>
+                                        <h2>{isCorrect ? 'Helyes! 😊' : 'Még nem jó! 😞'}</h2>
+                                    </div>
+                                )}
+                                <div className='right next'>
+                                    <Button
+                                        text='Ellenőrzés'
+                                        color='transparent'
+                                        onClick={async () => {
+                                            const body: ValidationBody = { taskId: playerLvl, solution: playerCode }
+                                            setIsLoading(true)
+                                            setIsCorrect(null)
+                                            const response = await fetch('api/html/validation', {
+                                                method: 'POST',
+                                                body: JSON.stringify(body),
+                                            })
+                                            setIsLoading(false)
+                                            setIsCorrect(((await response.json()) as ValidationResponse).similar)
+                                        }}
+                                    />
+                                </div>
                             </div>
-                        </div>}
+                        )}
                     </div>
                 </div>
             </div>

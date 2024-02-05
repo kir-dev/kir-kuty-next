@@ -23,29 +23,31 @@ export function ImageContainer(props: ImageProps) {
     return (
         <div className='content'>
             <div className='relative'>
-                <div>{loading && <div className={styles.placeholder}>Loading...</div>}{props.errorCode ? (
-                    <Image
-                        className={styles.img}
-                        src={`${props.src}/${props.errorCode}.jpg`}
-                        width={1}
-                        height={1}
-                        layout={'responsive'}
-                        alt={props.altText}
-                        placeholder='empty' // This is important to prevent rendering the previous image
-                        onLoad={handleLoadingComplete}
-                    />
-                ) : (
-                    <Image
-                        className={styles.img}
-                        src={props.src}
-                        width={1}
-                        height={1}
-                        layout={'responsive'}
-                        alt={props.altText}
-                        placeholder='empty' // This is important to prevent rendering the previous image
-                        onLoad={handleLoadingComplete}
-                    />
-                )}
+                <div>
+                    {loading && <div className={styles.placeholder}>Loading...</div>}
+                    {props.errorCode ? (
+                        <Image
+                            className={styles.img}
+                            src={`${props.src}/${props.errorCode}.jpg`}
+                            width={1}
+                            height={1}
+                            layout={'responsive'}
+                            alt={props.altText}
+                            placeholder='empty' // This is important to prevent rendering the previous image
+                            onLoad={handleLoadingComplete}
+                        />
+                    ) : (
+                        <Image
+                            className={styles.img}
+                            src={props.src}
+                            width={1}
+                            height={1}
+                            layout={'responsive'}
+                            alt={props.altText}
+                            placeholder='empty' // This is important to prevent rendering the previous image
+                            onLoad={handleLoadingComplete}
+                        />
+                    )}
                 </div>
                 {!props.revealed && (
                     <div className={styles.censored}>
