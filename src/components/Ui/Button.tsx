@@ -4,12 +4,13 @@ type ButtonProps = {
     color: string | null
     href?: string
     big?: boolean
+    veryBig?: boolean
     type?: 'submit' | 'reset' | 'button'
 }
 export default function Button(props: ButtonProps) {
     return (
         <button
-            className={props.big ? 'button-with-big-text' : ''}
+            className={props.veryBig ? 'button-with-very-big-text' : props.big ? 'button-with-big-text' : ''}
             onClick={() => {
                 props.onClick(props.text)
             }}

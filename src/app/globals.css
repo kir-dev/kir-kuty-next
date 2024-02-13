@@ -126,6 +126,11 @@ button,
     font-size: 28px;
 }
 
+.button-with-very-big-text {
+    font-size: 28px;
+    width: 40%;
+}
+
 .button {
     width: 70%;
 }

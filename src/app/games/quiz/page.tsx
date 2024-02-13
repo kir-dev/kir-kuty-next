@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from 'react'
 import Title from '@/components/Ui/Title'
-import styles from '@/app/games/http/styles.module.css'
 import { ImageContainer } from '@/components/Http-game/ImageContainer'
 import ButtonRowForQuiz from '@/components/Quiz-game/ButtonRowForQuiz'
 import axios from 'axios'
@@ -99,7 +98,7 @@ export default function QuizPage() {
                 <Title />
                 {showPopup && <WinPopup score={score} onClose={() => setShowPopup(false)} />}
                 <div className='instruction'>
-                    <h2>Mi lehet a helyes válasz?</h2>
+                    <h4>Mi lehet a helyes válasz?</h4>
                 </div>
                 <div className='main-content-row'>
                     <div className='sidebar'></div>
@@ -107,11 +106,11 @@ export default function QuizPage() {
                         {currentQuestion && currentQuestion.image && (
                             <ImageContainer altText={'Missing picture'} src={currentQuestion?.image!} revealed={true} />
                         )}
-                        {currentQuestion && <p>{currentQuestion.text}</p>}
+                        {currentQuestion && <h1>{currentQuestion.text}</h1>}
                         {!currentQuestion && <p>Loading questions...</p>}
                     </div>
                     <div className='sidebar result'>
-                        <p className={styles.score}>{`${score} megszerzett / ${round} pont`}</p>
+                        <h3>{`${score} megszerzett / ${round} pont`}</h3>
                     </div>
                 </div>
                 {currentQuestion?.answers && (

@@ -139,7 +139,7 @@ export default function HttpGame() {
                     <div className='main-content-column'>
                         <div className='flex-section-100'>
                             <div className='instruction'>
-                                <h2>Válassz egy állatot, amivel szeretnél játszani!</h2>
+                                <h4>Válassz egy állatot, amivel szeretnél játszani!</h4>
                             </div>
                             {animals.map((animal, idx) => (
                                 <button key={idx} onClick={() => setAnimalIdx(idx)} className={'button'}>
@@ -152,7 +152,7 @@ export default function HttpGame() {
                 ) : (
                     <>
                         <div className='instruction'>
-                            <h2>Melyik HTTP állapotkódra utalhat a kép?</h2>
+                            <h4>Melyik HTTP állapotkódra utalhat a kép?</h4>
                         </div>
                         <div className='main-content-row'>
                             <div className='sidebar'>
@@ -192,7 +192,7 @@ export default function HttpGame() {
                                 />
                             </div>
                             <div className='sidebar result'>
-                                <p className={styles.score}>{`${score} megszerzett / ${round} pont`}</p>
+                                <h4>{`${score} megszerzett / ${round} pont`}</h4>
                             </div>
                         </div>
                         <ButtonRowForHttp
