@@ -75,7 +75,7 @@ export default function HttpGame() {
     })
     const [revealed, setRevealed] = useState(false)
     const [animalIdx, setAnimalIdx] = useState(0)
-    const [numberOfImages, setNumberOfImages] = useState(0)
+    const [round, setRound] = useState(0)
     const [showPopup, setShowPopup] = useState(false)
 
     function getRandomUniqueStatuses() {
@@ -111,8 +111,8 @@ export default function HttpGame() {
             if (index == answers.correctBtnIndex) {
                 setScore(score => score + 1)
             }
-            setNumberOfImages(numberOfImages => numberOfImages + 1)
-            if (numberOfImages == 9) {
+            setRound(numberOfImages => numberOfImages + 1)
+            if (round == 9) {
                 setShowPopup(true)
             }
         }
@@ -126,7 +126,7 @@ export default function HttpGame() {
     useEffect(() => {
         getRandomUniqueStatuses()
         setScore(0)
-        setNumberOfImages(0)
+        setRound(0)
     }, [animalIdx])
 
     return (
@@ -192,7 +192,7 @@ export default function HttpGame() {
                                 />
                             </div>
                             <div className='sidebar result'>
-                                <p className={styles.score}>{`${score} megszerzett / ${numberOfImages} pont`}</p>
+                                <p className={styles.score}>{`${score} megszerzett / ${round} pont`}</p>
                             </div>
                         </div>
                         <ButtonRowForHttp
