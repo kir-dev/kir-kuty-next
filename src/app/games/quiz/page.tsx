@@ -11,36 +11,29 @@ export type QuizAnswer = {
     id: string
     text: string
     correct: boolean
-    question: QuizQuestion
+    questionId: string
 }
 
 type QuizQuestion = {
     id: string
     text: string
-    image: string
+    image?: string
     answers: QuizAnswer[]
 }
 
 export default function QuizPage() {
-    const [questions, setQuestions] = useState<QuizQuestion[]>([])
+    const [questions, setQuestions] = useState<any[]>([])
     const [answers, setAnswers] = useState<QuizAnswer[]>([])
     const [currentQuestion, setCurrentQuestion] = useState<QuizQuestion>()
-    const [currentAnswers, setCurrentAnswers] = useState<QuizAnswer[]>()
     const [score, setScore] = useState(0)
     const [numOfRounds, setnumOfRounds] = useState(0)
     const [revealed, setRevealed] = useState(false)
 
     async function fetchQuestions() {
         try {
-            const response = await axios.get(process.env.NEXT_PUBLIC_BASE_URL + '/question', {})
-            const data = await response.data
-            console.log(data)
-            data.map((question: QuizQuestion) => {
-                setQuestions(prev => [...prev, question])
-                question.answers.map((answer: QuizAnswer) => {
-                    setAnswers(prev => [...prev, answer])
-                })
-            })
+            const response = await axios.get('http://localhost:3300' + '/question', {})
+            setQuestions(response.data)
+            //console.log('questions', questions)
         } catch (ex) {}
     }
 
@@ -52,23 +45,28 @@ export default function QuizPage() {
 
     function startNewRound() {
         setRevealed(false)
-
         const nextQuestion = questions[Math.floor(Math.random() * questions.length)]
         setCurrentQuestion(nextQuestion)
-        const nextAnswers = answers.filter(answer => answer.question === nextQuestion)
-        setCurrentAnswers(nextAnswers)
+        console.log('nextQuestion', nextQuestion)
+        setnumOfRounds(numOfRounds + 1)
     }
 
     function vote(id: number) {
+        if (currentQuestion === undefined) return
+
         setRevealed(true)
-        if (currentAnswers![id].correct) {
+        if (currentQuestion!.answers![id].correct) {
             setScore(score + 1)
         }
     }
 
     useEffect(() => {
-        fetchQuestions()
-        startNewQuiz()
+        async function cuccmucc() {
+            await fetchQuestions()
+            startNewQuiz()
+        }
+
+        cuccmucc()
     }, [])
 
     return (
@@ -79,17 +77,18 @@ export default function QuizPage() {
                     <h2>Mi lehet a helyes válasz?</h2>
                 </div>
                 <div className='main-content-row'>
-                    <div className='sidebar'>fasdf</div>
+                    <div className='sidebar'>afdafadfs</div>
                     <div className='centerbar'>
                         {currentQuestion && <ImageContainer altText={'Missing picture'} src={currentQuestion?.image!} revealed={true} />}
+                        {currentQuestion && <p>{currentQuestion?.text}</p>}
                     </div>
                     <div className='sidebar result'>
                         <p className={styles.score}>{`${score} megszerzett / ${numOfRounds} pont`}</p>
                     </div>
                 </div>
-                {currentAnswers && (
+                {currentQuestion?.answers && (
                     <ButtonRowForQuiz
-                        answers={currentAnswers}
+                        answers={currentQuestion?.answers}
                         onClick={vote}
                         revealed={revealed}
                         onNext={startNewRound}
