@@ -24,6 +24,7 @@ type QuizQuestion = {
 const testQuestion: QuizQuestion = {
     id: '1',
     text: 'Mi a fővárosa Magyarországnak?',
+    image: 'https://static.vecteezy.com/system/resources/thumbnails/025/181/412/small/picture-a-captivating-scene-of-a-tranquil-lake-at-sunset-ai-generative-photo.jpg',
     answers: [
         { id: '1', text: 'Budapest asdf;jfasdlkfj;adflkjadsf', correct: true, questionId: '1' },
         { id: '2', text: 'Debrecen asdf;jfasdlkfj;adflkjadsf', correct: false, questionId: '1' },
@@ -104,7 +105,7 @@ export default function QuizPage() {
                     <div className='sidebar'></div>
                     <div className='centerbar'>
                         {currentQuestion && currentQuestion.image && (
-                            <ImageContainer altText={'Missing picture'} src={currentQuestion?.image!} revealed={true} />
+                            <ImageContainer altText={'Missing picture'} src={currentQuestion?.image!} revealed={true} small={true} />
                         )}
                         {currentQuestion && <h1>{currentQuestion.text}</h1>}
                         {!currentQuestion && <p>Loading questions...</p>}
