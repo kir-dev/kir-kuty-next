@@ -7,6 +7,8 @@ type ImageProps = {
     altText: string
     src: string
     revealed: boolean
+
+    small?: boolean
 }
 
 export function ImageContainer(props: ImageProps) {
@@ -23,7 +25,7 @@ export function ImageContainer(props: ImageProps) {
     return (
         <div className='content'>
             <div className='relative'>
-                <div style={{ width: 700, height: 600 }}>
+                <div style={props.small ? { width: 500, height: 400 } : { width: 700, height: 600 }}>
                     {loading && <div className={styles.placeholder}>Loading...</div>}
                     {props.errorCode ? (
                         <Image
