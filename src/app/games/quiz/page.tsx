@@ -5,18 +5,20 @@ import Title from '@/components/Ui/Title'
 import styles from '@/app/games/http/styles.module.css'
 import { ImageContainer } from '@/components/Http-game/ImageContainer'
 import ButtonRowForQuiz from '@/components/Quiz-game/ButtonRowForQuiz'
+import axios from 'axios'
 
 export type QuizAnswer = {
+    id: string
     text: string
-    question: QuizQuestion
     correct: boolean
+    question: QuizQuestion
 }
 
 type QuizQuestion = {
-    question: string
+    id: string
+    text: string
+    image: string
     answers: QuizAnswer[]
-    imageUrl: string
-    correct: number
 }
 
 export default function QuizPage() {
@@ -28,16 +30,18 @@ export default function QuizPage() {
     const [numOfRounds, setnumOfRounds] = useState(0)
     const [revealed, setRevealed] = useState(false)
 
-    function fetchQuestions() {
-        fetch(process.env.QUIZ_BACKEND_BASE_URL + '/questions')
-            .then(response => response.json())
-            .then(data => setQuestions(data))
-    }
-
-    function fetchAnswers() {
-        fetch(process.env.QUIZ_BACKEND_BASE_URL + '/answers')
-            .then(response => response.json())
-            .then(data => setAnswers(data))
+    async function fetchQuestions() {
+        try {
+            const response = await axios.get(process.env.NEXT_PUBLIC_BASE_URL + '/question', {})
+            const data = await response.data
+            console.log(data)
+            data.map((question: QuizQuestion) => {
+                setQuestions(prev => [...prev, question])
+                question.answers.map((answer: QuizAnswer) => {
+                    setAnswers(prev => [...prev, answer])
+                })
+            })
+        } catch (ex) {}
     }
 
     function startNewQuiz() {
@@ -64,7 +68,6 @@ export default function QuizPage() {
 
     useEffect(() => {
         fetchQuestions()
-        fetchAnswers()
         startNewQuiz()
     }, [])
 
@@ -78,7 +81,7 @@ export default function QuizPage() {
                 <div className='main-content-row'>
                     <div className='sidebar'>fasdf</div>
                     <div className='centerbar'>
-                        {currentQuestion && <ImageContainer altText={'Missing picture'} src={currentQuestion?.imageUrl!} revealed={true} />}
+                        {currentQuestion && <ImageContainer altText={'Missing picture'} src={currentQuestion?.image!} revealed={true} />}
                     </div>
                     <div className='sidebar result'>
                         <p className={styles.score}>{`${score} megszerzett / ${numOfRounds} pont`}</p>
