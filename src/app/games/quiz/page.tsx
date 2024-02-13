@@ -44,9 +44,8 @@ export default function QuizPage() {
 
     async function fetchQuestions() {
         try {
-            const response = await axios.get('https://kir-quiz-api.onrender.com/question', {})
+            const response = await axios.get('api.kir-kuty.kir-dev.hu/question', {})
             setQuestions(response.data)
-            console.log('questions', questions)
         } catch (ex) {}
     }
 
@@ -61,12 +60,6 @@ export default function QuizPage() {
         setRevealed(false)
         const nextQuestion = questions[round]
         setCurrentQuestion(nextQuestion)
-
-        //todo remove xd
-        setCurrentQuestion(testQuestion)
-
-        console.log(questions)
-        console.log('nextQuestion', nextQuestion)
     }
 
     function vote(id: number) {
