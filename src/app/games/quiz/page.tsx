@@ -40,6 +40,7 @@ export default function QuizPage() {
     const [round, setRound] = useState(0)
     const [revealed, setRevealed] = useState(false)
     const [showPopup, setShowPopup] = useState(false)
+    const [offsetIfNoAns, setOffsetIfNoAns] = useState(0)
 
     async function fetchQuestions() {
         try {
@@ -52,12 +53,16 @@ export default function QuizPage() {
         await fetchQuestions()
         setScore(0)
         setRound(0)
-        startNewRound()
     }
 
     function startNewRound() {
         setRevealed(false)
-        const nextQuestion = questions[round]
+
+        let nextQuestion = questions[round + offsetIfNoAns]
+        while (nextQuestion && !nextQuestion.answers) {
+            setOffsetIfNoAns(offsetIfNoAns + 1)
+            nextQuestion = questions[round + offsetIfNoAns]
+        }
         setCurrentQuestion(nextQuestion)
     }
 
@@ -76,17 +81,25 @@ export default function QuizPage() {
             setScore(score + 1)
         }
 
-        if (round >= questions.length || round >= 10) {
+        if (round + offsetIfNoAns >= questions.length - 1 || round >= 10) {
             setShowPopup(true)
         }
     }
 
     useEffect(() => {
-        startNewQuiz()
+        async function cuccmucc() {
+            await startNewQuiz()
+        }
+
+        cuccmucc()
     }, [])
 
+    useEffect(() => {
+        startNewRound()
+    }, [questions])
+
     return (
-        <div className='App'>
+        <div className='App' /* onLoad={startNewQuiz}*/>
             <div className='main-content-column'>
                 <Title />
                 {showPopup && <WinPopup score={score} onClose={() => setShowPopup(false)} />}
