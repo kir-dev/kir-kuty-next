@@ -100,12 +100,9 @@ export default function QuizPage() {
 
     return (
         <div className='App' /* onLoad={startNewQuiz}*/>
-            <div className='main-content-column'>
+            <div className='main-content-column-but-in-center'>
                 <Title />
                 {showPopup && <WinPopup score={score} onClose={() => setShowPopup(false)} />}
-                <div className='instruction'>
-                    <h4>Mi lehet a helyes válasz?</h4>
-                </div>
                 <div className='main-content-row'>
                     <div className='sidebar'></div>
                     <div className='centerbar'>
@@ -119,17 +116,19 @@ export default function QuizPage() {
                         <h3>{`${score} megszerzett / ${round} pont`}</h3>
                     </div>
                 </div>
-                {currentQuestion?.answers && (
-                    <ButtonRowForQuiz
-                        answers={currentQuestion?.answers}
-                        onClick={vote}
-                        revealed={revealed}
-                        onNext={startNewRound}
-                        onAbort={() => {
-                            setRevealed(false)
-                        }}
-                    />
-                )}
+                <div>
+                    {currentQuestion?.answers && (
+                        <ButtonRowForQuiz
+                            answers={currentQuestion?.answers}
+                            onClick={vote}
+                            revealed={revealed}
+                            onNext={startNewRound}
+                            onAbort={() => {
+                                setRevealed(false)
+                            }}
+                        />
+                    )}
+                </div>
             </div>
         </div>
     )
