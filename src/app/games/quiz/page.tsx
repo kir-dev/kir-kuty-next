@@ -46,14 +46,16 @@ export default function QuizPage() {
         try {
             const response = await axios.get('https://api.kir-kuty.kir-dev.hu/question', {})
             setQuestions(response.data)
+            console.log('response ' + response)
         } catch (ex) {}
     }
 
     async function startNewQuiz() {
+        console.log('startNewQuiz')
         await fetchQuestions()
+        console.log('fetchQuestions' + questions)
         setScore(0)
         setRound(0)
-        startNewRound()
     }
 
     function startNewRound() {
@@ -63,8 +65,12 @@ export default function QuizPage() {
         while (nextQuestion && !nextQuestion.answers) {
             setOffsetIfNoAns(offsetIfNoAns + 1)
             nextQuestion = questions[round + offsetIfNoAns]
+            console.log('offsetIfNoAns: ' + offsetIfNoAns)
         }
         setCurrentQuestion(nextQuestion)
+        console.log('nextquestion selected: ' + nextQuestion)
+        console.log(questions)
+        console.log(questions[round + offsetIfNoAns])
     }
 
     function vote(id: number) {
@@ -88,11 +94,16 @@ export default function QuizPage() {
     }
 
     useEffect(() => {
-        startNewQuiz()
+        async function cuccmucc() {
+            await startNewQuiz()
+            startNewRound()
+        }
+
+        cuccmucc()
     }, [])
 
     return (
-        <div className='App'>
+        <div className='App' /* onLoad={startNewQuiz}*/>
             <div className='main-content-column'>
                 <Title />
                 {showPopup && <WinPopup score={score} onClose={() => setShowPopup(false)} />}
