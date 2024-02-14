@@ -35,7 +35,6 @@ const testQuestion: QuizQuestion = {
 
 export default function QuizPage() {
     const [questions, setQuestions] = useState<any[]>([])
-    const [answers, setAnswers] = useState<QuizAnswer[]>([])
     const [currentQuestion, setCurrentQuestion] = useState<QuizQuestion>()
     const [score, setScore] = useState(0)
     const [round, setRound] = useState(0)
@@ -44,7 +43,7 @@ export default function QuizPage() {
 
     async function fetchQuestions() {
         try {
-            const response = await axios.get('api.kir-kuty.kir-dev.hu/question', {})
+            const response = await axios.get('https://api.kir-kuty.kir-dev.hu/question', {})
             setQuestions(response.data)
         } catch (ex) {}
     }
