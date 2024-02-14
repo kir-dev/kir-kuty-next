@@ -44,7 +44,7 @@ export default function QuizPage() {
 
     async function fetchQuestions() {
         try {
-            const response = await axios.get('https://api.kir-kuty.kir-dev.hu/question', {})
+            const response = await axios.get('https://api.kir-kuty.kir-dev.hu/question/random?number=10', {})
             setQuestions(response.data)
         } catch (ex) {}
     }
