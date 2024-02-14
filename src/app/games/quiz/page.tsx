@@ -46,14 +46,11 @@ export default function QuizPage() {
         try {
             const response = await axios.get('https://api.kir-kuty.kir-dev.hu/question', {})
             setQuestions(response.data)
-            console.log('response ' + response)
         } catch (ex) {}
     }
 
     async function startNewQuiz() {
-        console.log('startNewQuiz')
         await fetchQuestions()
-        console.log('fetchQuestions' + questions)
         setScore(0)
         setRound(0)
     }
@@ -65,12 +62,8 @@ export default function QuizPage() {
         while (nextQuestion && !nextQuestion.answers) {
             setOffsetIfNoAns(offsetIfNoAns + 1)
             nextQuestion = questions[round + offsetIfNoAns]
-            console.log('offsetIfNoAns: ' + offsetIfNoAns)
         }
         setCurrentQuestion(nextQuestion)
-        console.log('nextquestion selected: ' + nextQuestion)
-        console.log(questions)
-        console.log(questions[round + offsetIfNoAns])
     }
 
     function vote(id: number) {
@@ -88,7 +81,7 @@ export default function QuizPage() {
             setScore(score + 1)
         }
 
-        if (round + offsetIfNoAns >= questions.length || round >= 10) {
+        if (round + offsetIfNoAns >= questions.length - 1 || round >= 10) {
             setShowPopup(true)
         }
     }
@@ -96,11 +89,14 @@ export default function QuizPage() {
     useEffect(() => {
         async function cuccmucc() {
             await startNewQuiz()
-            startNewRound()
         }
 
         cuccmucc()
     }, [])
+
+    useEffect(() => {
+        startNewRound()
+    }, [questions])
 
     return (
         <div className='App' /* onLoad={startNewQuiz}*/>
