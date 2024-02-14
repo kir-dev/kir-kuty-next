@@ -40,6 +40,7 @@ export default function QuizPage() {
     const [round, setRound] = useState(0)
     const [revealed, setRevealed] = useState(false)
     const [showPopup, setShowPopup] = useState(false)
+    const [offsetIfNoAns, setOffsetIfNoAns] = useState(0)
 
     async function fetchQuestions() {
         try {
@@ -57,7 +58,12 @@ export default function QuizPage() {
 
     function startNewRound() {
         setRevealed(false)
-        const nextQuestion = questions[round]
+
+        let nextQuestion = questions[round + offsetIfNoAns]
+        while (nextQuestion && !nextQuestion.answers) {
+            setOffsetIfNoAns(offsetIfNoAns + 1)
+            nextQuestion = questions[round + offsetIfNoAns]
+        }
         setCurrentQuestion(nextQuestion)
     }
 
@@ -76,7 +82,7 @@ export default function QuizPage() {
             setScore(score + 1)
         }
 
-        if (round >= questions.length || round >= 10) {
+        if (round + offsetIfNoAns >= questions.length || round >= 10) {
             setShowPopup(true)
         }
     }
