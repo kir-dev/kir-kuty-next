@@ -15,11 +15,6 @@ type buttonRowProps = {
 export default function ButtonRowForHttp(props: buttonRowProps) {
     return (
         <div className={styles.buttoncontainer}>
-            {props.onAbort && (
-                <div className={'back'}>
-                    <Button key='next' text={'Másik állat'} onClick={props.onAbort} color='transparent'></Button>
-                </div>
-            )}
             <div className={styles.options}>
                 {props.answers.strings.map((answer, index) => (
                     <Button
@@ -31,8 +26,17 @@ export default function ButtonRowForHttp(props: buttonRowProps) {
                     />
                 ))}
             </div>
-            <div className={'next'}>
-                <Button key='next' text={'Következő'} onClick={props.onNext} color='transparent'></Button>
+
+            <div className={styles.actionbuttonrow}>
+                {props.onAbort && (
+                    <div className={'back'}>
+                        <Button key='next' text={'Másik állat'} onClick={props.onAbort} color='transparent'></Button>
+                    </div>
+                )}
+
+                <div className={'next'}>
+                    <Button key='next' text={'Következő'} onClick={props.onNext} color='transparent'></Button>
+                </div>
             </div>
         </div>
     )

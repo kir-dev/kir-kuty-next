@@ -6,3 +6,8 @@
     font-size: 1.5rem;
     font-weight: 700;
 }
+.paragraph {
+    margin-top: 1px;
+    text-indent: 2%;
+    text-align: justify;
+}

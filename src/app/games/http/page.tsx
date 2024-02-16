@@ -158,21 +158,21 @@ export default function HttpGame() {
                             <div className='sidebar'>
                                 <div className='left'>
                                     <h2> Mi is ez a játék? </h2>
-                                    <p>
+                                    <p className={styles.paragraph}>
                                         Biztos találkoztál már az ERROR 404-el! De azt nem biztos, hogy tudtad, hogy pontosan mit is jelent ez, vagy
                                         hogy miért szokott megjelenni.
                                     </p>
-                                    <p>
+                                    <p className={styles.paragraph}>
                                         A weboldalak általában úgy működnek, hogy amikor megnyitsz egy oldalt, a böngésződ elküld egy kérést a
                                         szervernek, amely válaszol a kérésre és jó esetben visszaküldi az oldalt. Ha azonban valami galiba történik,
                                         akkor a szerver weboldal helyett egy hibaüzenetet küld vissza a böngészőnek, amely segít megérteni, mi is
                                         csúszhatott félre.
                                     </p>
-                                    <p>
+                                    <p className={styles.paragraph}>
                                         Ilyen például a HTTP error 404, ami azt jelenti, a szerver nem találta meg a keresett weboldalt vagy fájlt,
                                         mert az nem létezik.
                                     </p>
-                                    <p>
+                                    <p className={styles.paragraph}>
                                         A játék során a feladatod, hogy kitaláld, melyik HTTP állapotkódhoz tartozik az adott, állatokkal illusztrált
                                         kép.
                                     </p>
@@ -193,18 +193,18 @@ export default function HttpGame() {
                             </div>
                             <div className='sidebar result'>
                                 <p className={styles.score}>{`${score} megszerzett / ${numberOfImages} pont`}</p>
+                                <ButtonRowForHttp
+                                    answers={answers}
+                                    onClick={vote}
+                                    revealed={revealed}
+                                    onNext={next}
+                                    onAbort={() => {
+                                        setAnimalIdx(-1)
+                                        setRevealed(false)
+                                    }}
+                                />
                             </div>
                         </div>
-                        <ButtonRowForHttp
-                            answers={answers}
-                            onClick={vote}
-                            revealed={revealed}
-                            onNext={next}
-                            onAbort={() => {
-                                setAnimalIdx(-1)
-                                setRevealed(false)
-                            }}
-                        />
                     </>
                 )}
             </div>

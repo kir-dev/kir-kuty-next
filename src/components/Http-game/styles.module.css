@@ -53,22 +53,24 @@
     flex-basis: 60%;
 }
 
+.options button {
+    width: 85%;
+    margin: 1%;
+}
+
+.actionbuttonrow {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.actionbuttonrow button {
+    height: 90%;
+    width: 100%;
+}
+
 .buttoncontainer {
     width: 100%;
-    display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
-}
-@media (max-width: 800px) {
-    .buttoncontainer div:nth-child(odd) {
-        width: 100%;
-        padding: 0;
-        margin: 0;
-    }
-
-    .buttoncontainer div:nth-child(even) {
-        flex-basis: 100%;
-        margin: auto;
-        order: 3;
-    }
 }
