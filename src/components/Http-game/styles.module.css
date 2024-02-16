@@ -2,15 +2,13 @@
     width: 80vh;
     display: block;
     margin: 0 auto;
-    overflow-y: hidden;
 }
 .censored {
     z-index: 1;
     background-color: black;
     position: absolute;
     bottom: 0.1rem;
-    height: 3rem;
-    width: 40rem;
+    height: 2rem;
     text-align: center;
     font-family: Bahnschrift, serif;
     color: white;
@@ -19,10 +17,19 @@
 
 .censored > h2 {
     color: white;
-    font-size: 3rem;
-    font-width: bold;
+    font-weight: bold;
     letter-spacing: 15px;
 }
+
+@media screen and (width >= 600px) {
+    .censored {
+        height: 3rem;
+    }
+    .censored > h2 {
+        font-size: 3rem;
+    }
+}
+
 .popup {
     position: fixed;
     top: 0;
@@ -33,14 +40,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 0px;
+    border-radius: 0;
     z-index: 99;
 }
 .popupMain {
     position: relative;
     background: white;
-    padding: 20px;
-    padding-right: 40px;
+    padding: 20px 40px 20px 20px;
     border-radius: 20px;
 }
 .popupMain > h1 {

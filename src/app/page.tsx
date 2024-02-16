@@ -6,7 +6,7 @@ export default function Home() {
     return (
         <main className='main-content-column'>
             <Title />
-            <div className='flex-section-100'>
+            <div className='flex-section-100 padding-16'>
                 <MenuItem
                     href='games/http'
                     title={'Kir-Kuty'}

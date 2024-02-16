@@ -43,7 +43,7 @@ function QuizTypeSelect({ setQuizType }: QuizTypeSelectProps) {
                     <h4>Válassz egy állatot, amivel szeretnél játszani!</h4>
                 </div>
                 {quizTypes.map(animal => (
-                    <button key={animal.name} onClick={() => setQuizType(animal)} className={'button'}>
+                    <button key={animal.name} onClick={() => setQuizType(animal)} className='button'>
                         <h2>{animal.name}</h2>
                         <div className={styles.icon}>{animal.svg}</div>
                     </button>
@@ -94,35 +94,9 @@ function HttpCodeQuiz({ questions, quizType, setQuizType }: HttpCodeQuizProps) {
     return (
         <>
             {showPopup && <WinPopup score={score} onClose={() => setShowPopup(false)} />}
-
-            <div className='instruction'>
-                <h4>Melyik HTTP állapotkódra utalhat a kép?</h4>
-            </div>
+            <h4 className='instruction'>Melyik HTTP állapotkódra utalhat a kép?</h4>
             <div className='main-content-row'>
-                <div className='sidebar'>
-                    <div className='left'>
-                        <h2> Mi is ez a játék? </h2>
-                        <p>
-                            Biztos találkoztál már az ERROR 404-el! De azt nem biztos, hogy tudtad, hogy pontosan mit is jelent ez, vagy hogy miért
-                            szokott megjelenni.
-                        </p>
-                        <p>
-                            A weboldalak általában úgy működnek, hogy amikor megnyitsz egy oldalt, a böngésződ elküld egy kérést a szervernek, amely
-                            válaszol a kérésre és jó esetben visszaküldi az oldalt. Ha azonban valami galiba történik, akkor a szerver weboldal
-                            helyett egy hibaüzenetet küld vissza a böngészőnek, amely segít megérteni, mi is csúszhatott félre.
-                        </p>
-                        <p>
-                            Ilyen például a HTTP error 404, ami azt jelenti, a szerver nem találta meg a keresett weboldalt vagy fájlt, mert az nem
-                            létezik.
-                        </p>
-                        <p>A játék során a feladatod, hogy kitaláld, melyik HTTP állapotkódhoz tartozik az adott, állatokkal illusztrált kép.</p>
-                        <Button
-                            text={'Bővebben a HTTP állapotkódokról >'}
-                            color={'transparent'}
-                            onClick={() => window.open('https://hu.wikipedia.org/wiki/HTTP-%C3%A1llapotk%C3%B3dok')}
-                        />
-                    </div>
-                </div>
+                <Sidebar />
                 <div className='centerbar'>
                     <ImageContainer
                         errorCode={currentQuestion?.find(option => option.correct)?.value.code ?? 0}
@@ -146,5 +120,33 @@ function HttpCodeQuiz({ questions, quizType, setQuizType }: HttpCodeQuizProps) {
                 }}
             />
         </>
+    )
+}
+
+function Sidebar() {
+    return (
+        <div className='sidebar md-w-75'>
+            <div className='left'>
+                <h2> Mi is ez a játék? </h2>
+                <p>
+                    Biztos találkoztál már az ERROR 404-el! De azt nem biztos, hogy tudtad, hogy pontosan mit is jelent ez, vagy hogy miért szokott
+                    megjelenni.
+                </p>
+                <p>
+                    A weboldalak általában úgy működnek, hogy amikor megnyitsz egy oldalt, a böngésződ elküld egy kérést a szervernek, amely válaszol
+                    a kérésre és jó esetben visszaküldi az oldalt. Ha azonban valami galiba történik, akkor a szerver weboldal helyett egy
+                    hibaüzenetet küld vissza a böngészőnek, amely segít megérteni, mi is csúszhatott félre.
+                </p>
+                <p>
+                    Ilyen például a HTTP error 404, ami azt jelenti, a szerver nem találta meg a keresett weboldalt vagy fájlt, mert az nem létezik.
+                </p>
+                <p>A játék során a feladatod, hogy kitaláld, melyik HTTP állapotkódhoz tartozik az adott, állatokkal illusztrált kép.</p>
+                <Button
+                    text='Bővebben a HTTP állapotkódokról >'
+                    color='transparent'
+                    onClick={() => window.open('https://hu.wikipedia.org/wiki/HTTP-%C3%A1llapotk%C3%B3dok')}
+                />
+            </div>
+        </div>
     )
 }

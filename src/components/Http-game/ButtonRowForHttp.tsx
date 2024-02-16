@@ -13,12 +13,8 @@ type ButtonRowProps = {
 
 export default function ButtonRowForHttp({ options, onNext, onAbort, onClick, revealed }: ButtonRowProps) {
     return (
-        <div className={'full-width'}>
-            {onAbort && (
-                <div className={'left back'}>
-                    <Button key='next' text={'Másik állat'} onClick={onAbort} color='transparent'></Button>
-                </div>
-            )}
+        <div className='full-width wrap-row'>
+            {onAbort && <Button key='next' text={'Másik állat'} onClick={onAbort} color='transparent'></Button>}
             <div className='center'>
                 {options?.map(option => (
                     <Button
@@ -30,9 +26,7 @@ export default function ButtonRowForHttp({ options, onNext, onAbort, onClick, re
                     />
                 ))}
             </div>
-            <div className={'right next'}>
-                <Button key='next' text={'Következő'} onClick={onNext} color='transparent'></Button>
-            </div>
+            <Button key='next' text={'Következő'} onClick={onNext} color='transparent'></Button>
         </div>
     )
 }
