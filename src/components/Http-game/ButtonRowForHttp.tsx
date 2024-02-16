@@ -1,37 +1,37 @@
 'use client'
 import React from 'react'
 import Button from '@/components/Ui/Button'
-import { Answers } from '@/app/games/http/page'
+import { Option } from '@/app/games/http/httpStatuses'
 
-type buttonRowProps = {
-    answers: Answers
+type ButtonRowProps = {
+    options?: Option[]
     onNext: () => void
     revealed: boolean
-    onClick: (id: number) => void
+    onClick: (option: Option) => void
     onAbort?: () => void
 }
 
-export default function ButtonRowForHttp(props: buttonRowProps) {
+export default function ButtonRowForHttp({ options, onNext, onAbort, onClick, revealed }: ButtonRowProps) {
     return (
         <div className={'full-width'}>
-            {props.onAbort && (
+            {onAbort && (
                 <div className={'left back'}>
-                    <Button key='next' text={'Másik állat'} onClick={props.onAbort} color='transparent'></Button>
+                    <Button key='next' text={'Másik állat'} onClick={onAbort} color='transparent'></Button>
                 </div>
             )}
             <div className='center'>
-                {props.answers.strings.map((answer, index) => (
+                {options?.map(option => (
                     <Button
-                        key={index}
-                        text={answer}
+                        key={option.value.code}
+                        text={option.value.name}
                         big={true}
-                        onClick={() => props.onClick(index)}
-                        color={props.revealed ? (props.answers.correctBtnIndex == index ? 'var(--green)' : 'var(--red)') : 'transparent'}
+                        onClick={() => onClick(option)}
+                        color={revealed ? (option.correct ? 'var(--green)' : 'var(--red)') : 'transparent'}
                     />
                 ))}
             </div>
             <div className={'right next'}>
-                <Button key='next' text={'Következő'} onClick={props.onNext} color='transparent'></Button>
+                <Button key='next' text={'Következő'} onClick={onNext} color='transparent'></Button>
             </div>
         </div>
     )
