@@ -7,6 +7,8 @@ type ImageProps = {
     altText: string
     src: string
     revealed: boolean
+
+    small?: boolean
 }
 
 export function ImageContainer(props: ImageProps) {

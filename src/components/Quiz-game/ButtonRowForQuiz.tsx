@@ -11,7 +11,7 @@ type buttonRowProps = {
     onAbort?: () => void
 }
 
-export default function ButtonRow(props: buttonRowProps) {
+export default function ButtonRowForQuiz(props: buttonRowProps) {
     return (
         <div className={'full-width'}>
             <div className='center'>
@@ -19,14 +19,11 @@ export default function ButtonRow(props: buttonRowProps) {
                     <Button
                         key={index}
                         text={answer.text}
-                        big={true}
+                        veryBig={true}
                         onClick={() => props.onClick(index)}
                         color={props.revealed ? (answer.correct ? 'var(--green)' : 'var(--red)') : 'transparent'}
                     />
                 ))}
-            </div>
-            <div className={'right next'}>
-                <Button key='next' text={'Következő'} onClick={props.onNext} color='transparent'></Button>
             </div>
         </div>
     )
