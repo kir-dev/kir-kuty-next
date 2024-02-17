@@ -49,6 +49,15 @@
     text-align: center;
 }
 
+.options {
+    flex-basis: 60%;
+}
+
+.options button {
+    width: 85%;
+    margin: 1%;
+}
+
 .actionbuttonrow {
     display: flex;
     flex-direction: row;

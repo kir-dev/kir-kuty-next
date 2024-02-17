@@ -75,7 +75,7 @@ export default function HttpGame() {
     })
     const [revealed, setRevealed] = useState(false)
     const [animalIdx, setAnimalIdx] = useState(0)
-    const [round, setRound] = useState(0)
+    const [numberOfImages, setNumberOfImages] = useState(0)
     const [showPopup, setShowPopup] = useState(false)
 
     function getRandomUniqueStatuses() {
@@ -111,8 +111,8 @@ export default function HttpGame() {
             if (index == answers.correctBtnIndex) {
                 setScore(score => score + 1)
             }
-            setRound(numberOfImages => numberOfImages + 1)
-            if (round == 9) {
+            setNumberOfImages(numberOfImages => numberOfImages + 1)
+            if (numberOfImages == 9) {
                 setShowPopup(true)
             }
         }
@@ -126,7 +126,7 @@ export default function HttpGame() {
     useEffect(() => {
         getRandomUniqueStatuses()
         setScore(0)
-        setRound(0)
+        setNumberOfImages(0)
     }, [animalIdx])
 
     return (
@@ -139,7 +139,7 @@ export default function HttpGame() {
                     <div className='main-content-column'>
                         <div className='flex-section-100'>
                             <div className='instruction'>
-                                <h4>Válassz egy állatot, amivel szeretnél játszani!</h4>
+                                <h2>Válassz egy állatot, amivel szeretnél játszani!</h2>
                             </div>
                             {animals.map((animal, idx) => (
                                 <button key={idx} onClick={() => setAnimalIdx(idx)} className={'button'}>
@@ -152,7 +152,7 @@ export default function HttpGame() {
                 ) : (
                     <>
                         <div className='instruction'>
-                            <h4>Melyik HTTP állapotkódra utalhat a kép?</h4>
+                            <h2>Melyik HTTP állapotkódra utalhat a kép?</h2>
                         </div>
                         <div className='main-content-row'>
                             <div className='sidebar'>
@@ -192,7 +192,7 @@ export default function HttpGame() {
                                 />
                             </div>
                             <div className='sidebar result'>
-                                <h4>{`${score} megszerzett / ${round} pont`}</h4>
+                                <p className={styles.score}>{`${score} megszerzett / ${numberOfImages} pont`}</p>
                                 <ButtonRowForHttp
                                     answers={answers}
                                     onClick={vote}

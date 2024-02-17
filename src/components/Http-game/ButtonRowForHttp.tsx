@@ -15,7 +15,7 @@ type buttonRowProps = {
 export default function ButtonRowForHttp(props: buttonRowProps) {
     return (
         <div className={styles.buttoncontainer}>
-            <div className='options'>
+            <div className={styles.options}>
                 {props.answers.strings.map((answer, index) => (
                     <Button
                         key={index}

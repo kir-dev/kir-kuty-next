@@ -2,139 +2,99 @@
 
 import React, { useEffect, useState } from 'react'
 import Title from '@/components/Ui/Title'
+import styles from '@/app/games/http/styles.module.css'
 import { ImageContainer } from '@/components/Http-game/ImageContainer'
 import ButtonRowForQuiz from '@/components/Quiz-game/ButtonRowForQuiz'
-import axios from 'axios'
-import WinPopup from '@/components/Http-game/WinPopup'
-import styles from './styles.module.css'
 
 export type QuizAnswer = {
-    id: string
     text: string
+    question: QuizQuestion
     correct: boolean
-    questionId: string
 }
 
 type QuizQuestion = {
-    id: string
-    text: string
-    image?: string
+    question: string
     answers: QuizAnswer[]
-}
-
-const testQuestion: QuizQuestion = {
-    id: '1',
-    text: 'Mi a fővárosa Magyarországnak?',
-    image: 'https://static.vecteezy.com/system/resources/thumbnails/025/181/412/small/picture-a-captivating-scene-of-a-tranquil-lake-at-sunset-ai-generative-photo.jpg',
-    answers: [
-        { id: '1', text: 'Budapest asdf;jfasdlkfj;adflkjadsf', correct: true, questionId: '1' },
-        { id: '2', text: 'Debrecen asdf;jfasdlkfj;adflkjadsf', correct: false, questionId: '1' },
-        { id: '3', text: 'Szeged asdf;jfasdlkfj;adflkjadsf', correct: false, questionId: '1' },
-        { id: '4', text: 'Pécs asdf;jfasdlkfj;adflkjadsf', correct: false, questionId: '1' },
-    ],
+    imageUrl: string
+    correct: number
 }
 
 export default function QuizPage() {
-    const [questions, setQuestions] = useState<any[]>([])
+    const [questions, setQuestions] = useState<QuizQuestion[]>([])
+    const [answers, setAnswers] = useState<QuizAnswer[]>([])
     const [currentQuestion, setCurrentQuestion] = useState<QuizQuestion>()
+    const [currentAnswers, setCurrentAnswers] = useState<QuizAnswer[]>()
     const [score, setScore] = useState(0)
-    const [round, setRound] = useState(0)
+    const [numOfRounds, setnumOfRounds] = useState(0)
     const [revealed, setRevealed] = useState(false)
-    const [showPopup, setShowPopup] = useState(false)
-    const [offsetIfNoAns, setOffsetIfNoAns] = useState(0)
 
-    async function fetchQuestions() {
-        try {
-            const response = await axios.get('https://api.kir-kuty.kir-dev.hu/question/random?number=10', {})
-            setQuestions(response.data)
-        } catch (ex) {}
+    function fetchQuestions() {
+        fetch(process.env.QUIZ_BACKEND_BASE_URL + '/questions')
+            .then(response => response.json())
+            .then(data => setQuestions(data))
     }
 
-    async function startNewQuiz() {
-        await fetchQuestions()
+    function fetchAnswers() {
+        fetch(process.env.QUIZ_BACKEND_BASE_URL + '/answers')
+            .then(response => response.json())
+            .then(data => setAnswers(data))
+    }
+
+    function startNewQuiz() {
         setScore(0)
-        setRound(0)
+        setnumOfRounds(0)
+        startNewRound()
     }
 
     function startNewRound() {
         setRevealed(false)
 
-        let nextQuestion = questions[round + offsetIfNoAns]
-        while (nextQuestion && !nextQuestion.answers) {
-            setOffsetIfNoAns(offsetIfNoAns + 1)
-            nextQuestion = questions[round + offsetIfNoAns]
-        }
+        const nextQuestion = questions[Math.floor(Math.random() * questions.length)]
         setCurrentQuestion(nextQuestion)
+        const nextAnswers = answers.filter(answer => answer.question === nextQuestion)
+        setCurrentAnswers(nextAnswers)
     }
 
     function vote(id: number) {
-        if (currentQuestion === undefined) return
-
-        if (revealed) {
-            setRevealed(false)
-            startNewRound()
-            return
-        }
-
         setRevealed(true)
-        setRound(round + 1)
-        if (currentQuestion!.answers![id].correct) {
+        if (currentAnswers![id].correct) {
             setScore(score + 1)
-        }
-
-        if (round + offsetIfNoAns >= questions.length - 1 || round >= 10) {
-            setShowPopup(true)
         }
     }
 
     useEffect(() => {
-        async function cuccmucc() {
-            await startNewQuiz()
-        }
-
-        cuccmucc()
+        fetchQuestions()
+        fetchAnswers()
+        startNewQuiz()
     }, [])
 
-    useEffect(() => {
-        startNewRound()
-    }, [questions])
-
     return (
-        <div className='App' /* onLoad={startNewQuiz}*/>
-            <div className='main-content-column-but-in-center'>
+        <div className='App'>
+            <div className='main-content-column'>
                 <Title />
-                {showPopup && <WinPopup score={score} onClose={() => setShowPopup(false)} />}
+                <div className='instruction'>
+                    <h2>Mi lehet a helyes válasz?</h2>
+                </div>
                 <div className='main-content-row'>
-                    <div className='sidebar'></div>
+                    <div className='sidebar'>fasdf</div>
                     <div className='centerbar'>
-                        <div className={styles.quizbox}>
-                            {currentQuestion && currentQuestion.image && (
-                                <ImageContainer altText={'Missing picture'} src={currentQuestion?.image!} revealed={true} />
-                            )}
-                            {currentQuestion && <h1 className={styles.question}>{currentQuestion.text}</h1>}
-                            {!currentQuestion && <p>Loading questions...</p>}
-
-                            <div className={styles.quizbox}>
-                                <div className='options'>
-                                    {currentQuestion?.answers && (
-                                        <ButtonRowForQuiz
-                                            answers={currentQuestion?.answers}
-                                            onClick={vote}
-                                            revealed={revealed}
-                                            onNext={startNewRound}
-                                            onAbort={() => {
-                                                setRevealed(false)
-                                            }}
-                                        />
-                                    )}
-                                </div>
-                            </div>
-                        </div>
+                        {currentQuestion && <ImageContainer altText={'Missing picture'} src={currentQuestion?.imageUrl!} revealed={true} />}
                     </div>
                     <div className='sidebar result'>
-                        <h3>{`${score} megszerzett / ${round} pont`}</h3>
+                        <p className={styles.score}>{`${score} megszerzett / ${numOfRounds} pont`}</p>
                     </div>
                 </div>
+                {currentAnswers && (
+                    <ButtonRowForQuiz
+                        answers={currentAnswers}
+                        onClick={vote}
+                        revealed={revealed}
+                        onNext={startNewRound}
+                        onAbort={() => {
+                            setRevealed(false)
+                        }}
+                    />
+                )}
             </div>
         </div>
     )

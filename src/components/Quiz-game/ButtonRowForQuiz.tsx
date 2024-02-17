@@ -25,7 +25,7 @@ export default function ButtonRow(props: buttonRowProps) {
                     />
                 ))}
             </div>
-            <div className={'options'}>
+            <div className={'right next'}>
                 <Button key='next' text={'Következő'} onClick={props.onNext} color='transparent'></Button>
             </div>
         </div>
