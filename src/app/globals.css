@@ -27,16 +27,6 @@ html {
 body {
     width: 100%;
     height: 100%;
-    overflow: hidden;
-    padding: 0;
-    margin: 0;
-    background-color: var(--background);
-}
-
-ImageContainer {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
     padding: 0;
     margin: 0;
     background-color: var(--background);
@@ -78,27 +68,48 @@ h2 {
 }
 
 .main-content-row {
+    gap: 1rem;
     width: 100%;
+    flex-direction: column;
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+}
+
+@media screen and (width >= 850px) {
+    .md-w-75 {
+        width: 50%;
+    }
+}
+
+@media screen and (width >= 1350px) {
+    .main-content-row {
+        flex-direction: row;
+        align-items: start;
+    }
+
+    .sidebar {
+        width: 25%;
+        margin-top: 0;
+    }
 }
 
 .sidebar {
     flex: 1;
-    width: 25%;
     min-width: 200px;
-    overflow-x: hidden;
-    margin: 0 1rem;
-    /* border: 2px red dashed; */
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 2rem;
 }
 
 .result {
     font-size: 20px;
-    font-family: Consolas;
+    font-family: Consolas, monospace;
 }
 
-.centerbar {
+.centerbar,
+.centerbar > h1 {
+    text-align: center;
     margin: 0 1rem;
     /* border: 2px red dashed; */
 }
@@ -148,7 +159,8 @@ button,
     padding: 10px 20px;
     margin: 8px 16px;
     background: none;
-    width: 600px;
+    max-width: 600px;
+    width: 100%;
     border-radius: 20px;
     border: 5px solid black;
     font-family: Bahnschrift, serif;
@@ -191,23 +203,17 @@ button:active {
     margin: 0;
 }
 
-.next {
-    position: absolute;
-    right: 0rem;
-    margin: 1rem;
-    z-index: 1;
-}
-
-.back {
-    position: absolute;
-    left: 0rem;
-    margin: 1rem;
-    z-index: 1;
-}
-
 .App {
     text-align: center;
     height: 100%;
+}
+
+.wrap-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
 .full-width {
@@ -230,14 +236,12 @@ button:active {
 .right {
     display: inline-block;
     text-align: right;
-    float: right;
     z-index: 1;
 }
 
 .left {
     display: inline-block;
     text-align: left;
-    float: left;
     z-index: 1;
 }
 
@@ -276,7 +280,6 @@ html {
 body {
     width: 100%;
     height: 100vh;
-    overflow: hidden;
     padding: 0;
     margin: 0;
 }
@@ -339,11 +342,14 @@ h2 {
     color: white;
 }
 
+.padding-16 {
+    padding: 16px;
+}
+
 .flex-section-100 {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: 100%;
     width: 100%;
 }
