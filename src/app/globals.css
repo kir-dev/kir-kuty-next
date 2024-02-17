@@ -27,7 +27,6 @@ html {
 body {
     width: 100%;
     height: 100%;
-    overflow: hidden;
     padding: 0;
     margin: 0;
     background-color: var(--background);
@@ -60,6 +59,7 @@ h2 {
 }
 
 .main-content-column {
+    width: 100%;
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -81,7 +81,9 @@ h2 {
     width: 100%;
     display: flex;
     flex-direction: row;
+    flex: 1;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .sidebar {
@@ -99,15 +101,19 @@ h2 {
 }
 
 .centerbar {
-    margin: 0 1rem;
+    margin: 1%;
     /* border: 2px red dashed; */
+    min-width: 40%;
+    justify-content: center;
 }
 
 .content {
+    max-width: 600px;
     display: flex;
     flex-direction: column;
     align-items: center;
     flex: 3;
+    margin: auto;
 }
 
 .center {
@@ -192,17 +198,17 @@ button:active {
 }
 
 .next {
-    position: absolute;
     right: 0rem;
     margin: 1rem;
     z-index: 1;
+    flex-basis: 40%;
 }
 
 .back {
-    position: absolute;
     left: 0rem;
     margin: 1rem;
     z-index: 1;
+    flex-basis: 40%;
 }
 
 .App {
@@ -213,6 +219,7 @@ button:active {
 .full-width {
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     position: relative;
     vertical-align: center;
     margin: 20px 0px;
@@ -276,7 +283,6 @@ html {
 body {
     width: 100%;
     height: 100vh;
-    overflow: hidden;
     padding: 0;
     margin: 0;
 }
@@ -312,10 +318,10 @@ h2 {
 }
 
 .instruction {
-    padding: 10px;
     font-style: italic;
     display: flex;
     margin: 0;
+    padding: 0;
 }
 
 #next {
@@ -339,11 +345,35 @@ h2 {
     color: white;
 }
 
+.codespace {
+    padding-bottom: 5rem;
+    min-height: 30rem;
+    flex: 1 0 50%;
+    margin: 0 1rem;
+}
+
 .flex-section-100 {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: 100%;
     width: 100%;
+}
+
+@media (max-width: 1100px) {
+    .centerbar {
+        width: 100%;
+        margin-top: 8%;
+    }
+}
+
+@media (max-width: 1000px) {
+    .flex-section-100 a {
+        width: 85%;
+    }
+
+    .codespace {
+        order: -1;
+        flex: 1 0 90%;
+    }
 }

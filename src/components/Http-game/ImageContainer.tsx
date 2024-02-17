@@ -25,7 +25,7 @@ export function ImageContainer(props: ImageProps) {
     return (
         <div className='content'>
             <div className='relative'>
-                <div style={props.small ? { width: 500, height: 400 } : { width: 700, height: 600 }}>
+                <div>
                     {loading && <div className={styles.placeholder}>Loading...</div>}
                     {props.errorCode ? (
                         <Image

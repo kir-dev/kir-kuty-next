@@ -2,3 +2,9 @@
     float: left;
     justify-self: center;
 }
+
+.paragraph {
+    margin-top: 1px;
+    text-indent: 2%;
+    text-align: justify;
+}

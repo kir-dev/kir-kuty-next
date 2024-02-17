@@ -3,15 +3,17 @@
     display: block;
     margin: 0 auto;
     overflow-y: hidden;
+    object-fit: cover;
 }
 .censored {
     z-index: 1;
     background-color: black;
     position: absolute;
     bottom: 0.1rem;
-    height: 3rem;
+    height: 10%;
     width: 40rem;
     text-align: center;
+    vertical-align: center;
     font-family: Bahnschrift, serif;
     color: white;
     width: 100%;
@@ -19,7 +21,7 @@
 
 .censored > h2 {
     color: white;
-    font-size: 3rem;
+    font-size: x-large;
     font-width: bold;
     letter-spacing: 15px;
 }
@@ -45,4 +47,30 @@
 }
 .popupMain > h1 {
     text-align: center;
+}
+
+.options {
+    flex-basis: 60%;
+}
+
+.options button {
+    width: 85%;
+    margin: 1%;
+}
+
+.actionbuttonrow {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.actionbuttonrow button {
+    height: 90%;
+    width: 100%;
+}
+
+.buttoncontainer {
+    width: 100%;
+    justify-content: space-between;
 }
