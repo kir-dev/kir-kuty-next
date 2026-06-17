@@ -98,12 +98,16 @@ function HttpCodeQuiz({ questions, quizType, setQuizType }: HttpCodeQuizProps) {
             <div className='main-content-row'>
                 <Sidebar />
                 <div className='centerbar'>
-                    <ImageContainer
-                        errorCode={currentQuestion?.find(option => option.correct)?.value.code ?? 0}
-                        altText={quizType.name}
-                        src={quizType.url}
-                        revealed={revealed}
-                    />
+                    {currentQuestion?.find(option => option.correct)?.value.code ? (
+                        <ImageContainer
+                            errorCode={currentQuestion.find(option => option.correct)!.value.code}
+                            altText={quizType.name}
+                            src={quizType.url}
+                            revealed={revealed}
+                        />
+                    ) : (
+                        <div className='content'>Loading...</div>
+                    )}
                 </div>
                 <div className='sidebar result'>
                     <h4>{`${score} megszerzett / ${round} pont`}</h4>
