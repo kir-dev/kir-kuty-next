@@ -30,7 +30,7 @@ export function ImageContainer(props: ImageProps) {
                     {props.errorCode ? (
                         <Image
                             className={styles.img}
-                            src={`${props.src}/${props.errorCode}.jpg`}
+                            src={`${props.src.replace(/\/$/, '')}/${props.errorCode}.jpg`}
                             width={1}
                             height={1}
                             layout={'responsive'}
